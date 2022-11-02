@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { BackofficeRoutingModule } from './backoffice-routing.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -21,7 +22,9 @@ import { BackofficeLayoutComponent } from './layouts/backoffice-layout/backoffic
   ],
   imports: [
     CommonModule,
-    BackofficeRoutingModule
+    BackofficeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class BackofficeModule { }
