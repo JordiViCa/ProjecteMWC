@@ -1,7 +1,13 @@
 # ProjecteMWC
+
+## FRONTEND
+
+Versió node: 16.14.2
+Versió Angula CLI: 13.1.4
+Versió npm: 8.3.0
+Versió Angular: 13.1.3
+
 # Crides FRONTEND -> BACKEND
-
-
 
 Client = Usuari normal
 Admin = Treballador
