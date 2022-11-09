@@ -13,6 +13,7 @@ Versió Angular: 13.1.3
 # Crides FRONTEND -> BACKEND
 
 Client = Usuari normal
+
 Admin = Treballador
 
 Dades amb format json
