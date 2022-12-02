@@ -1,1 +1,10 @@
-<p>users works!</p>
+<div class="flex flex-col mb-2">
+    <label class="text-3xl font-thin" for="buscador">Filtrar</label>
+    <input class="p-2 w-1/4" type="text" name="buscador" id="buscador">
+</div>
+<div class="flex flex-col w-1/4">
+    <div class=" flex bg-gray-300 my-4 p-4 rounded-md  shadow-lg flex-col" *ngFor="let user of users">
+        <p>{{ user.name  }} {{ user.surname }}</p>
+        <p>{{ user.nif}}</p>
+    </div>
+</div>
