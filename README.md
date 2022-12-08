@@ -33,7 +33,7 @@ Dades amb format json
 
 
 > ### Crida post per donar de baixa client
-> Crida put/post que dona de baixa un client
+> Crida post que dona de baixa un client
 
 
 > ### Crida per token al fer login
