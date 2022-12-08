@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { BackofficeRoutingModule } from './backoffice-routing.module';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserComponent } from './pages/user/user.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -13,7 +12,6 @@ import { BackofficeLayoutComponent } from './layouts/backoffice-layout/backoffic
 
 @NgModule({
   declarations: [
-    SidebarComponent,
     UserComponent,
     LoginComponent,
     HomeComponent,
