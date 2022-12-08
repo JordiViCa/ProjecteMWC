@@ -28,11 +28,11 @@ Dades amb format json
 > Crida que retorni llistat de noms de tots els clients
 
 
-> ### Crida put per registrar client
+> ### Crida post per registrar client
 > Crida que registre client
 
 
-> ### Crida put/post per donar de baixa client
+> ### Crida post per donar de baixa client
 > Crida put/post que dona de baixa un client
 
 
