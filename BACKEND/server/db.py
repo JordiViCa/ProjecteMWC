@@ -1,9 +1,8 @@
-from flask import current_app as app
-from flask_pymongo import PyMongo
+from flask_pymongo import MongoClient
 
-mongo_client = PyMongo(app)
+mongo_client = MongoClient("mongodb://localhost")
 
-class db():
+class Db():
     def __init__(self):
         self.database = mongo_client.MWC
         self.clients = self.database.Clients
