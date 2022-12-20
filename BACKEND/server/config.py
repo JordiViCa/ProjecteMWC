@@ -1,11 +1,7 @@
 class Config:
     DEBUG = False
     TESTING = False
-    MONGODB_SETTINGS = {
-    'db': 'your_database',
-    'host': 'localhost',
-    'port': 27017
-}
+    MONGO_URI = "mongodb://localhost"
 class ProdConf(Config):
     SECRET_KEY="pasdlsanbehfb4324rwf2#~@"
     SILENT = True
