@@ -1,5 +1,8 @@
 from flask import Flask
 from .config import ProdConf, DevConf
+from flask_mongoengine import MongoEngine
+
+db = MongoEngine()
 
 def create_app(dev_config=False):
     # create and configure the app
@@ -17,5 +20,7 @@ def create_app(dev_config=False):
     else:
         # load the development config if passed in
         app.config.from_object(DevConf)
+    
+    db.init_app(app)
 
     return app

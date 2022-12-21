@@ -1,7 +1,10 @@
 class Config:
     DEBUG = False
     TESTING = False
-    MONGO_URI = "mongodb://localhost"
+    MONGODB_SETTINGS = {
+        'db' : 'MWC',
+        'host' : 'localhost'
+    }
 class ProdConf(Config):
     SECRET_KEY="pasdlsanbehfb4324rwf2#~@"
     SILENT = True
