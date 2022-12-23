@@ -1,8 +1,10 @@
 from flask import Flask
 from .config import ProdConf, DevConf
 from flask_mongoengine import MongoEngine
+from flask_jwt_extended import JWTManager
 
 db = MongoEngine()
+jwt = JWTManager()
 
 def create_app(dev_config=False):
     # create and configure the app
@@ -22,5 +24,6 @@ def create_app(dev_config=False):
         app.config.from_object(DevConf)
     
     db.init_app(app)
+    jwt.init_app(app)
 
     return app
