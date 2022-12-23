@@ -1,8 +1,7 @@
-
 from .. import db
 
 
 class Admin(db.Document):
-    name = db.StringField()
+    nom = db.StringField()
     email = db.StringField()
     password = db.StringField()
