@@ -1,17 +1,20 @@
-from flask import Blueprint, request, redirect, url_for, jsonify
+from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from .. import jwt
 from ..models.client import Client
+from ..models.admin import Admin
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 auth = Blueprint("auth", __name__)
 
 
-@auth.route('/login', methods=['POST'])
-def login():
+
+@auth.route('/login/<string:user>', methods=['POST'])
+def login(user):
     email = request.args.get("email")
     pw = request.args.get("password")
-    usuari = Client.objects(email=email).first()
+
+    usuari = Client.objects(email=email).first() if user=='client' else Admin.objects(email=email).first() if user=='admin' else None
     
     if usuari is not None and check_password_hash(usuari.password, pw):
         access_token = create_access_token(identity=str(usuari.id))
@@ -19,20 +22,28 @@ def login():
     else:
         return jsonify(success=False)
     
-@auth.route('/registrar', methods=['POST'])
-def sign_in():
+@auth.route('/registrar/<string:user>', methods=['POST'])
+def sign_in(user):
     nom = request.args.get("nom")
     email = request.args.get("email")
     pw = request.args.get("password")
-    usuari = Client(nom = nom, email = email, password = generate_password_hash(pw))
+    usuari = None
+    if user == "client":
+        usuari = Client(nom = nom, email = email, password = generate_password_hash(pw))
+    elif user == "admin":
+        usuari = Admin(nom = nom, email = email, password = generate_password_hash(pw))
+
     usuari.save()
     return jsonify(success=True)
 
 
-# Aixo encara no funciona, s'ha de decidir en quina part del request estarà el token per a que s'agafi
 @auth.route("/usuari-actual", methods=['GET'])
-@jwt_required
+@jwt_required()
 def usuari_actual():
     usuari_id = get_jwt_identity()
-    usuari = Client.filter.get(usuari_id)
-    return ""
+    usuari = Client.objects(id = usuari_id).first()
+    if usuari is None:
+        usuari = Admin.objects(id = usuari_id).first()
+    
+    return jsonify(tipus=usuari.__class__.__name__,dades=usuari)
+
