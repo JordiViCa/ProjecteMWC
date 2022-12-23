@@ -23,6 +23,7 @@ Dades amb format json
 > ### Crida get usuari actual
 > Crida que retorna totes les dades de l'usuari actual
 ruta: /usuari_actual
+Se li ha de pasar el token generat en el login per el header
 
 > ### Crida get usuaris clients
 > Crida que retorni llistat de noms de tots els clients
