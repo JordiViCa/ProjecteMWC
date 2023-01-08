@@ -36,7 +36,7 @@ L'usuari pot ser client o admin
 
 > ### Crida post per donar de baixa client
 > Crida post que dona de baixa un client
-
+ruta client/baixa
 
 > ### Crida per token al fer login
 > Crida que retorna un token si login ok, sino retorna un string vuit
@@ -45,7 +45,7 @@ L'usuari pot ser client o admin
 
 > ### Crida check token actual
 > Crida que verifica que el token actual es valid, retorna bool
-
+ruta auth/check-token
 
 > ### Crida get info client concret
 > Crida que retorna tota la info d'un client concret
