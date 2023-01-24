@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { BackofficeLayoutComponent } from './layouts/backoffice-layout/backoffice-layout.component';
+import { FilterPipe } from '../pipes/filter.pipe';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { BackofficeLayoutComponent } from './layouts/backoffice-layout/backoffic
     LoginComponent,
     HomeComponent,
     UsersComponent,
-    BackofficeLayoutComponent
+    BackofficeLayoutComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,

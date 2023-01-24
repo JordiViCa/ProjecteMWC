@@ -1,24 +1,27 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filterUsers'
 })
 export class FilterPipe implements PipeTransform {
 
-  filterUsers(value: string,array: any) {
+  transform(array: any,value: any): any {
+    if (value == "") {
+      return array;
+    }
     let arr2 = array.filter((el: any) => {
       let keys = Object.keys(el);
+      let includesText = false;
       keys.forEach(key => {
         if (el[key].includes(value)) {
-          return el
+          includesText = true
         }
       });
+      if (includesText) {
+        return el
+      }
     });
     return arr2
-  }
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
   }
 
 }
