@@ -2,6 +2,7 @@ from .. import db
 
 
 class Admin(db.Document):
-    nom = db.StringField()
-    email = db.StringField()
-    password = db.StringField()
+    email = db.StringField(max_length=100, primary_key=True, required=True)
+    name = db.StringField(max_length=100, required=True)
+    password = db.StringField(required=True)
+    authority = db.BooleanField(required=True)
