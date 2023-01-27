@@ -2,5 +2,5 @@
 
 ## INSTALL DEPENDENCES
 
-On Backend file exec
+>On BACKEND FOLDER exec
 > `pip install -r requirements.txt`
