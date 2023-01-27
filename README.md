@@ -1,4 +1,5 @@
 # ProjecteMWC
+https://my.visme.co/view/y46wyrwz-m3x58ke6pkpq5krp#s1
 
 ## FRONTEND
 
@@ -27,7 +28,7 @@ Se li ha de pasar el token generat en el login per el header
 
 > ### Crida get usuaris clients
 > Crida que retorni llistat de noms de tots els clients
-ruta: /client/llistar
+> ruta: /client/llistar
 
 > ### Crida post per registrar usuari
 > Crida que registre usuari
@@ -36,7 +37,7 @@ L'usuari pot ser client o admin
 
 > ### Crida post per donar de baixa client
 > Crida post que dona de baixa un client
-
+> ruta: client/baixa
 
 > ### Crida per token al fer login
 > Crida que retorna un token si login ok, sino retorna un string vuit
@@ -45,7 +46,7 @@ L'usuari pot ser client o admin
 
 > ### Crida check token actual
 > Crida que verifica que el token actual es valid, retorna bool
-
+> ruta auth/check-token
 
 > ### Crida get info client concret
 > Crida que retorna tota la info d'un client concret

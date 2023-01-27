@@ -1,0 +1,25 @@
+table {
+    @apply w-full text-sm text-left text-gray-500 border-separate border-spacing-1;
+}
+tr {
+    @apply border-b border-gray-200 my-4;
+}
+td {
+    @apply px-6 py-2 bg-white transition-all text-xl;
+}
+td:nth-child(2) {
+    @apply bg-gray-50;
+}
+th {
+    @apply px-6 py-2 bg-white sticky top-0;
+    font-size: larger;
+}
+th:nth-child(2) {
+    @apply bg-gray-50;
+}
+tr:hover td {
+    @apply bg-gray-200;
+}
+.tableWrapper {
+    @apply relative max-h-[50vh] overflow-y-auto;
+}
