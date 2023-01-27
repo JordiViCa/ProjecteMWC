@@ -22,16 +22,16 @@ Dades amb format json
 
 > ### Crida get usuari actual
 > Crida que retorna totes les dades de l'usuari actual
-ruta: /usuari_actual
+ruta: /current-user
 Se li ha de pasar el token generat en el login per el header
 
 > ### Crida get usuaris clients
 > Crida que retorni llistat de noms de tots els clients
 ruta: /client/llistar
 
-> ### Crida post per registrar client
-> Crida que registre client
-ruta: /registrar/<string:user>
+> ### Crida post per registrar usuari
+> Crida que registre usuari
+ruta: /register/usuari
 L'usuari pot ser client o admin
 
 > ### Crida post per donar de baixa client
@@ -40,7 +40,7 @@ L'usuari pot ser client o admin
 
 > ### Crida per token al fer login
 > Crida que retorna un token si login ok, sino retorna un string vuit
-ruta: /login/<string:user>
+ruta: /login/usuari
 L'usuari pot ser client o admin
 
 > ### Crida check token actual
