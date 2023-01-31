@@ -1,14 +1,12 @@
 from dotenv import load_dotenv
 import os
-print(load_dotenv())
-print(os.getenv("MONGODB_SETTINGS"))
+load_dotenv()
+
 class Config:
     DEBUG = False
     TESTING = False
-    MONGODB_SETTINGS = {
-        "db": os.getenv("DB"),
-        "host" : os.getenv("DB_HOST")
-    }
+    MONGODB_HOST = os.getenv("DB_URI")
+    
 class ProdConf(Config):
     SECRET_KEY= os.getenv("SECRET_KEY")
     SILENT = True
