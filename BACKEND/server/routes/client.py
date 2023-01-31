@@ -1,14 +1,14 @@
 from flask import Blueprint, request, jsonify
 from ..models.client import Client
 
-client = Blueprint("client", __name__)
+clients = Blueprint("clients", __name__)
 
 
-@client.route('/llistar', methods=['GET'])
+@clients.route('/', methods=['GET'])
 def llistar():
     return jsonify(Client.objects)
 
-@client.route('/baixa', methods=['POST'])
+@clients.route('/baixa', methods=['POST'])
 def baixa():
     email = request.args.get("email")
     user = Client.objects(email = email).first()
