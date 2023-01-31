@@ -6,6 +6,7 @@ class Config:
     DEBUG = False
     TESTING = False
     MONGODB_HOST = os.getenv("DB_URI")
+    SSL_CONTEXT=('cert.pem', 'key.pem')
     
 class ProdConf(Config):
     SECRET_KEY= os.getenv("SECRET_KEY")

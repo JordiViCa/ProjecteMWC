@@ -10,9 +10,10 @@ auth = Blueprint("auth", __name__)
 
 @auth.route('/login/<string:userType>', methods=['POST'])
 def login(userType):
-    email = request.args.get("email")
-    nif = request.args.get("nif")
-    pw = request.args.get("password")
+    body = request.get_json()
+    email = body.get("email")
+    nif = body.get("nif")
+    pw = body.get("password")
     user = None
 
     if userType == "client":
@@ -21,16 +22,17 @@ def login(userType):
         elif nif:
             user = Client.objects(nif=nif).first()
         else:
-            return "nif or email must be provided", 500
+            return "nif or email must be provided", 400
 
     elif userType == "admin":
         if not email:
-            return "email must be provided", 500
+            return "email must be provided", 400
         user = Admin.objects(email=email).first()
     else:
-        return "Incorrect user type, choose admin or client", 500
-    
-    
+        return "Incorrect user type, choose admin or client", 400
+    if not pw:
+        return "password must be provided", 400
+
     if not check_password_hash(user.password, pw):
         return "Invalid password", 500
         
