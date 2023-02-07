@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/backoffice/user.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: UntypedFormBuilder,
     private router: Router,
-    private userSVC: UserService
+    private authSVC: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   initFormLogin() {
     this.loginForm = this.formBuilder.group({
-      username: ["", [Validators.required, Validators.email]],
+      user: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required]],
       remember: [false, []]
     });
@@ -33,12 +34,11 @@ export class LoginComponent implements OnInit {
 
   sendFormLogin() {
     if (this.loginForm.valid) {
-      let token = this.userSVC.getToken(this.loginForm.value.username,this.loginForm.value.password)
-      if (token) { // MAKE CALL TO ENDPOINT TO CHECK CREDENTIALS
-        this.router.navigateByUrl("/backoffice")
-      } else {
-        this.showErrors = true;
-      }
+      this.authSVC.attemptLogin(this.loginForm.value,true).then(
+        (el: any) => {
+          console.log(el)
+        }
+      )
     } else {
       this.showErrors = true;
     }
