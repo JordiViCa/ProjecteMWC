@@ -52,8 +52,8 @@ export class AuthService {
           if (el === false) {
             resolve(false);
           } else {
-            this._admin = el.user;
-            this.tokenService.saveToken(el.jwt);
+            this._admin = el.admin;
+            this.tokenService.saveToken(el.token);
             resolve(true);
           }
         }
@@ -65,7 +65,7 @@ export class AuthService {
             resolve(false);
           } else {
             this._user = el.user;
-            this.tokenService.saveToken(el.jwt);
+            this.tokenService.saveToken(el.token);
             resolve(true);
           }
         }
