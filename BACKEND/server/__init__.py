@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from .config import ProdConf, DevConf
 from flask_mongoengine import MongoEngine
 from flask_jwt_extended import JWTManager
@@ -10,6 +11,7 @@ jwt = JWTManager()
 def create_app(dev_config=False):
     # create and configure the app
     app = Flask(__name__)
+    cors = CORS(app, resources={r'/api/*': {'origins': 'http://localhost:4200'}})
 
     from .routes.auth import auth
     from .routes.client import clients
