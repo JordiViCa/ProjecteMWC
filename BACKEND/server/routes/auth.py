@@ -73,10 +73,9 @@ def register_admin():
         return "password not correct", 500
     
     admin.password = generate_password_hash(admin.password)
-    try:
-        admin.save()
-    except Exception as e:
-        return str(e), 500
+    
+    admin.save()
+    
 
     return jsonify(success=True), 200
 
@@ -87,37 +86,33 @@ def register_client():
     client = Client(**body)
     
     if not (client.email or client.nif):
-        return "email and nif are empty, at least one must be provided", 500
+        return "email and nif are empty, at least one must be provided", 400
 
     # [TODO] full password checking
     if not client.password:
         return "password not correct", 500
     
     client.password = generate_password_hash(client.password)
-    try:
-        client.save()
-    except Exception as e:
-        return str(e), 500
+   
+    client.save()
+    
 
     return jsonify(success=True), 200
 
 
 @auth.route("/current-user", methods=['GET'])
 @jwt_required()
-def usuari_actual():
+def current_user():
     userId = get_jwt_identity()
     user = None
-    try:
-        user = Client.objects(id = userId).first()
-    except Exception:
-        pass
 
+    user = Client.objects(id = userId).first()
     if user is None:
-        user = Admin.objects(pk = userId).first()
+        user = Admin.objects(id = userId).first()
     
     return jsonify(type=user.__class__.__name__,data=user)
 
 
 @auth.route("/check-token", methods=['POST'])
-def check():
+def check_token():
     return verify_jwt_in_request()
