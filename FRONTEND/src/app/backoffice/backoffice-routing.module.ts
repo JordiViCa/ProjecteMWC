@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminAuthGuard } from '../guards/admin-auth.guard';
 import { BackofficeLayoutComponent } from './layouts/backoffice-layout/backoffice-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: '',
     component: BackofficeLayoutComponent,
+    canActivate: [AdminAuthGuard],
     children: [
       { path: '', component: HomeComponent},
       { path: 'users', component: UsersComponent},
