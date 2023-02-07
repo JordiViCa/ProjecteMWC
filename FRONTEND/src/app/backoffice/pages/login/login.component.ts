@@ -3,6 +3,7 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/backoffice/user.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: UntypedFormBuilder,
     private router: Router,
-    private authSVC: AuthService
+    private authSVC: AuthService,
+    private tokenSVC: TokenService
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authSVC.attemptLogin(this.loginForm.value,true).then(
         (el: any) => {
-          console.log(el)
+          this.router.navigate(["/backoffice"])
         }
       )
     } else {

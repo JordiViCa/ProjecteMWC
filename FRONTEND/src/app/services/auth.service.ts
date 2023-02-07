@@ -78,7 +78,7 @@ export class AuthService {
       email: loginData.user,
       password: loginData.password
     }
-    return this.http.post(environment.backendURL + 'login/client', JSON.stringify(body))
+    return this.http.post(environment.backendURL + 'api/auth/login/client', JSON.stringify(body), this.getLoginHeader())
       .pipe(
         tap( res => res),
         catchError(() => of(false))
@@ -90,7 +90,7 @@ export class AuthService {
       email: loginData.user,
       password: loginData.password
     }
-    return this.http.post(environment.backendURL + 'login/admin', JSON.stringify(body))
+    return this.http.post(environment.backendURL + 'api/auth/login/admin', JSON.stringify(body), this.getLoginHeader())
       .pipe(
         tap( res => res),
         catchError(() => of(false))
@@ -110,4 +110,11 @@ export class AuthService {
       withCredentials: true
     }
   };
+  getLoginHeader() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+  }
 }
