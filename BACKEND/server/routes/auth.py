@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .. import jwt
 from ..models.client import Client
 from ..models.admin import Admin
+import json
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, verify_jwt_in_request
 
 auth = Blueprint("auth", __name__)
@@ -34,10 +35,14 @@ def login(userType):
         return "password must be provided", 400
 
     if not check_password_hash(user.password, pw):
-        return "Invalid password", 500
+        return "Invalid password", 404
         
     access_token = create_access_token(identity=str(user.id))
-    return jsonify(token=access_token), 200
+    dict_user = json.loads(user.to_json())
+    dict_user.pop("password", None)
+
+
+    return jsonify(token=access_token, user=dict_user), 200
 
 
 
