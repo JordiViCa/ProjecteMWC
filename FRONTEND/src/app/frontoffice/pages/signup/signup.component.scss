@@ -1,24 +1,26 @@
 .form{
+    color: #98b8db;
     margin-left: 500px;
     margin-right: 500px;
-    background-color: rgb(235, 179, 110);
+    background-color: rgb(37, 60, 93);
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 30px;
     padding-bottom: 30px;
-    border-radius: 80px;
+    border-radius: 60px;
     text-align: left;
 
 }
 .pg{
-background-color: rgb(41, 45, 105);
+    background-image: url('https://i.pinimg.com/originals/e1/f8/55/e1f8554dd0f4e79613cceb8cd006161d.jpg');
+    background-repeat: no-repeat;
 padding-top: 100px;
 padding-bottom: 100px;
 }
 
 
 .btn{
-    background-color: rgb(88, 107, 205);
+    background-color: rgb(89, 91, 104);
     border-radius: 90px;
     
 
@@ -26,4 +28,8 @@ padding-bottom: 100px;
 
 .button{
     text-align: center;
+}
+.btn:hover{
+    background-color: rgb(61, 65, 65);
+
 }

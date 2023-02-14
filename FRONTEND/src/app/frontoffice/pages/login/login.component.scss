@@ -1,8 +1,8 @@
 .card{
-    color: #1c1a1a;
+    color: #98b8db;
     text-align: center;
     font-size: 20px;
-    background-color: rgb(235, 179, 110);
+    background-color: rgb(37, 60, 93);
     margin-right: 500px;
     margin-left: 500px;
     margin-top: 60px;
@@ -12,8 +12,13 @@
 }
 
 button{
-    background-color: rgb(73, 129, 202);
+    background-color: rgb(89, 91, 104);
     margin-top: 30px;
+    border-radius: 90px;
+}
+
+button:hover{
+    background-color: rgb(61, 65, 65);
 }
 
 form{
@@ -22,7 +27,11 @@ form{
 }
 
 .pg{
-    background-color:rgb(41, 45, 105);
+    background-image: url('https://i.pinimg.com/originals/e1/f8/55/e1f8554dd0f4e79613cceb8cd006161d.jpg');
+    background-repeat: no-repeat;
     padding-top: 100px;
     padding-bottom: 100px;
     }
+#emailHelp{
+    color: azure;
+}
