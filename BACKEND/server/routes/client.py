@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from ..models.client import Client
 from mongoengine.errors import InvalidQueryError
-
+from flask_jwt_extended import get_jwt_identity, jwt_required
 
 clients = Blueprint("clients", __name__)
 
@@ -51,7 +51,13 @@ def update_client(id):
     except Exception as e:
         return str(e), 500
 
-    
-
-
     return jsonify(success=True)
+
+@clients.route("documents", methods=["GET"])
+@jwt_required()
+def get_client_documents():
+    id = get_jwt_identity()
+    user = Client.objects(id=id).first()
+    if not user:
+        return "client not found", 404
+    return jsonify(documents=user.documents)
