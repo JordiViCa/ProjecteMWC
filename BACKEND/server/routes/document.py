@@ -24,11 +24,28 @@ def get_documents():
         return "forbidden access", 403
     return jsonify(documents=Client.objects.only("documents"))
 
+@documents.route("<id>", methods=["GET"])
+@jwt_required()
+def get_document(id):
+    user = Client.objects(documents__match={"_id":id}).first()
+    if not user:
+        return "document not found", 404
+    
+    document = user.documents.filter(_id=id).first()
+    if not document:
+        return "document not found", 404
+    
+    token_id = get_jwt_identity()
+    admin = Admin.objects(id=token_id).first()
+    if str(user.id) != token_id and not admin:
+        return "forbidden access", 403
+    return jsonify(document=document)
+
 
 @documents.route("/", methods=["POST"])
 def create_document():
     file = request.files["file"]
-    id = request.form.get("id")    
+    id = request.form["id"]    
 
     user = Client.objects(id=id).first()
 
@@ -64,29 +81,22 @@ def create_document():
     # if not user:
     #     return "not found", 404
 
-@documents.route("/", methods=["DELETE"])
-def remove_document():
-    body = request.get_json()
-    file_name = body["fileName"]
-    user_id = body["userId"]
-    try:
-        user = Client.objects(id=user_id).first()
-    except ValidationError:
-        return "invalid id", 400
+@documents.route("<id>", methods=["DELETE"])
+def remove_document(id):
+    user = Client.objects(documents__match={"_id":id}).first()
     if not user:
-        return "user not found", 404
+        return "document not found", 404
     
-    document = user.documents.filter(name=file_name).first()
+    document = user.documents.filter(_id=id).first()
     if not document:
         return "document not found", 404
     
     file_base_path = os.path.join(app.config["UPLOAD_FOLDER"], str(user.id))
-    file_path = os.path.join(file_base_path, file_name)
+    file_path = os.path.join(file_base_path, document.name)
     path_exist = os.path.isfile(file_path)
 
     if path_exist:   
         os.remove(file_path)
-
 
     user.update(pull__documents=document)
 

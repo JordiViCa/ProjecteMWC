@@ -5,6 +5,7 @@ from ..models.client import Client
 from ..models.admin import Admin
 import json
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, verify_jwt_in_request
+from mongoengine.errors import NotUniqueError
 
 auth = Blueprint("auth", __name__)
 
@@ -78,10 +79,11 @@ def register_admin():
         return "password not correct", 500
     
     admin.password = generate_password_hash(admin.password)
+    try:
+        admin.save()
+    except NotUniqueError as e:
+        return "bad request", 400   
     
-    admin.save()
-    
-
     return jsonify(success=True), 200
 
 
@@ -98,9 +100,11 @@ def register_client():
         return "password not correct", 500
     
     client.password = generate_password_hash(client.password)
-   
-    client.save()
     
+    try:
+        client.save()
+    except NotUniqueError as e:
+        return "bad request", 400     
 
     return jsonify(success=True), 200
 
