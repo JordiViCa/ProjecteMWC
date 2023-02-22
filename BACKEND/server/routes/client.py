@@ -39,7 +39,6 @@ def get_client(id):
 def update_client(id):
     body = request.get_json()
     body.pop("password", None)
-    print(body)
 
     user = Client.objects(email=id).first()
     if not user:

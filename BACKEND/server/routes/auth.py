@@ -82,7 +82,7 @@ def register_admin():
     try:
         admin.save()
     except NotUniqueError as e:
-        return "bad request", 400   
+        return "duplicated key", 400   
     
     return jsonify(success=True), 200
 
@@ -104,7 +104,7 @@ def register_client():
     try:
         client.save()
     except NotUniqueError as e:
-        return str(e), 400     
+        return "duplicated key", 400     
 
     return jsonify(success=True), 200
 
