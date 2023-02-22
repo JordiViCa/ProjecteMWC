@@ -4,6 +4,7 @@ import { AdminAuthGuard } from '../guards/admin-auth.guard';
 import { BackofficeLayoutComponent } from './layouts/backoffice-layout/backoffice-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { NewUserComponent } from './pages/new-user/new-user.component';
 import { UserComponent } from './pages/user/user.component';
 import { UsersComponent } from './pages/users/users.component';
 
@@ -15,12 +16,13 @@ const routes: Routes = [
   {
     path: '',
     component: BackofficeLayoutComponent,
-    canActivate: [AdminAuthGuard],
+    //canActivate: [AdminAuthGuard],
     children: [
       { path: '', component: HomeComponent},
       { path: 'users', component: UsersComponent},
       { path: 'users/:id', component: UserComponent},
-      { path: 'chats', component: HomeComponent}
+      { path: 'chats', component: HomeComponent},
+      { path: 'new-user', component: NewUserComponent}
     ]
   }
 ];

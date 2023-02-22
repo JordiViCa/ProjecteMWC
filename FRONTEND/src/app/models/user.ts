@@ -11,7 +11,8 @@ export class User {
         public address: string,
         public email: string,
         public nif: string,
-        public documents: Object
+        public documents?: Object,
+        public password?: string
     ) {
 
     }

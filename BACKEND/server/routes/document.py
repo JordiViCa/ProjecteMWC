@@ -18,10 +18,13 @@ documents = Blueprint("documents", __name__)
 @documents.route("/", methods=["GET"])
 @jwt_required()
 def get_documents():
+    print("Enter")
     id = get_jwt_identity()
+    print("JWT")
     user = Admin.objects(id=id).first()
     if not user:
         return "forbidden access", 403
+    print("Admin")
     return jsonify(documents=Client.objects.only("documents"))
 
 @documents.route("<id>", methods=["GET"])

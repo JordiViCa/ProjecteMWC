@@ -1,0 +1,49 @@
+<form [formGroup]="newUserForm" class="p-10 flex flex-wrap justify-between   w-full" (ngSubmit)="sendFormRegister()">
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="name">Name</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="name">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="password">Password</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="password">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="surname1">Surname</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="surname1">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="surname2">Second Surname</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="surname2">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="birthDate">Birth Date</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="date" formControlName="birthDate">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="phone">Phone</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="phone">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="postalCode">Postal code</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="postalCode">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="town">Town</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="town">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="address">Address</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="address">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="email">Email</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="email">
+    </div>
+    <div class="flex w-[48%] flex-col mb-5">
+        <label class="mb-2 text-gray-500" for="nif">Nif</label>
+        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="nif">
+    </div>
+    <div class="flex flex-row justify-end mt-12 mb-5 w-full">
+        <button type="submit" class="py-[0.375rem] px-[0.75rem] text-white font-normal bg-[#0d6efd] hover:bg-[#0b5ed7] transition-all rounded-md shadow-md">Register</button>
+    </div>
+</form>

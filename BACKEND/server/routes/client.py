@@ -7,7 +7,9 @@ clients = Blueprint("clients", __name__)
 
 
 @clients.route('/', methods=['GET'])
+@jwt_required()
 def get_clients():
+    id = get_jwt_identity()
     clients = [client for client in Client.objects.exclude("password") ]
     return clients
 

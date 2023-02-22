@@ -38,9 +38,12 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authSVC.attemptLogin(this.loginForm.value,true).then(
         (el: any) => {
-          if (el) {
-            this.router.navigate(["/backoffice"])
-          }
+          console.log("Logged",el)
+          this.router.navigateByUrl("/backoffice") 
+        },
+        (error: any) => {
+          this.showErrors = true;
+          console.log(error)
         }
       )
     } else {
