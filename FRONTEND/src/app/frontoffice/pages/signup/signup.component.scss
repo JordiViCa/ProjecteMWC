@@ -12,16 +12,15 @@
 
 }
 .pg{
-    background-image: url('https://t3.ftcdn.net/jpg/03/52/97/12/360_F_352971299_Q01cOnvpCL6E9jWRip770bgzb2qkpnJ6.jpg');
+    background-color: rgb(223, 216, 216);
 padding-top: 100px;
 padding-bottom: 100px;
 }
 
 .pg img{
-    width: 100%;
-    height: 600px;
-    object-position: center;
-    object-fit: cover;}
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;}
 
 
 .btn{
@@ -38,3 +37,4 @@ padding-bottom: 100px;
     background-color: rgb(61, 65, 65);
 
 }
+
