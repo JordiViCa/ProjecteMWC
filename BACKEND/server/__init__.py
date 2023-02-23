@@ -11,7 +11,7 @@ jwt = JWTManager()
 def create_app(dev_config=False):
     # create and configure the app
     app = Flask(__name__)
-    cors = CORS(app, resources={r'/api/*': {'origins': 'http://localhost:4200'}})
+    cors = CORS(app, resources={r'/api/*': {'origins': 'http://localhost:4200'}}, headers=['Content-Type', 'Access-Control-Allow-Origin', 'Authorization'])
 
     from .routes.auth import auth
     from .routes.client import clients

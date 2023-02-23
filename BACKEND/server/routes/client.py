@@ -3,14 +3,16 @@ from ..models.client import Client
 from mongoengine.errors import InvalidQueryError
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
+
 clients = Blueprint("clients", __name__)
 
 
-@clients.route('/', methods=['GET'])
+@clients.route('', methods=['GET'])
 @jwt_required()
 def get_clients():
     id = get_jwt_identity()
-    clients = [client for client in Client.objects.exclude("password") ]
+    client_list = Client.objects.exclude("password")
+    clients = [client for client in  client_list]
     return clients
 
 @clients.route('<id>', methods=['DELETE'])

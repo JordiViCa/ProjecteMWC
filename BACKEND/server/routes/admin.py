@@ -11,7 +11,7 @@ def check_token():
     verify_jwt_in_request()
 
 
-@admins.route('/', methods=['GET'])
+@admins.route('', methods=['GET'])
 def get_admins():
     admins = [admin for admin in Admin.objects.exclude("password") ]
     return admins
