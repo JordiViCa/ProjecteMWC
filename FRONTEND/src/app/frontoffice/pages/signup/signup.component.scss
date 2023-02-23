@@ -2,7 +2,7 @@
     color: #98b8db;
     margin-left: 500px;
     margin-right: 500px;
-    background-color: rgb(37, 60, 93);
+    background-image: url('https://i.pinimg.com/originals/e1/f8/55/e1f8554dd0f4e79613cceb8cd006161d.jpg');
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 30px;
@@ -12,11 +12,16 @@
 
 }
 .pg{
-    background-image: url('https://i.pinimg.com/originals/e1/f8/55/e1f8554dd0f4e79613cceb8cd006161d.jpg');
-    background-repeat: no-repeat;
+    background-image: url('https://t3.ftcdn.net/jpg/03/52/97/12/360_F_352971299_Q01cOnvpCL6E9jWRip770bgzb2qkpnJ6.jpg');
 padding-top: 100px;
 padding-bottom: 100px;
 }
+
+.pg img{
+    width: 100%;
+    height: 600px;
+    object-position: center;
+    object-fit: cover;}
 
 
 .btn{
