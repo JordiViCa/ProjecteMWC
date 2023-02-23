@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, send_file
 from ..models.document import Document
 from ..models.admin import Admin
 from ..models.client import Client
@@ -18,13 +18,10 @@ documents = Blueprint("documents", __name__)
 @documents.route("", methods=["GET"])
 @jwt_required()
 def get_documents():
-    print("Enter")
     id = get_jwt_identity()
-    print("JWT")
     user = Admin.objects(id=id).first()
     if not user:
         return "forbidden access", 403
-    print("Admin")
     return jsonify(documents=Client.objects.only("documents"))
 
 @documents.route("<id>", methods=["GET"])
@@ -46,19 +43,20 @@ def get_document(id):
 
 
 @documents.route("", methods=["POST"])
+@jwt_required()
 def create_document():
     file = request.files["file"]
-    id = request.form["id"]    
+    id = get_jwt_identity()   
 
     user = Client.objects(id=id).first()
 
     if not user:
-        return "error", 404
+        return "Client not found", 404
     
     if not allowed_file(file.filename):
         return "Invalid file extension", 400
     
-    file_base_path = os.path.join(app.config["UPLOAD_FOLDER"], str(user.id))
+    file_base_path = os.path.join(os.path.dirname(app.instance_path), app.config["UPLOAD_FOLDER"], str(user.id))
     os.makedirs(file_base_path, exist_ok=True)
     file_name = secure_filename(file.filename)
     file_path = os.path.join(file_base_path, file_name)
@@ -76,15 +74,9 @@ def create_document():
         user.save()
     
     return jsonify(success=True)
-    
-    # id = get_jwt_identity()
-    # user = Admin.objects(id=id).first()
-    # if not user:
-    #     user = Client.objects(id=id).first()
-    # if not user:
-    #     return "not found", 404
 
 @documents.route("<id>", methods=["DELETE"])
+@jwt_required()
 def remove_document(id):
     user = Client.objects(documents__match={"_id":id}).first()
     if not user:
@@ -94,7 +86,11 @@ def remove_document(id):
     if not document:
         return "document not found", 404
     
-    file_base_path = os.path.join(app.config["UPLOAD_FOLDER"], str(user.id))
+    token_id = get_jwt_identity()
+    if str(user.id) != token_id:
+        return "forbidden acces", 403
+    
+    file_base_path = os.path.join(os.path.dirname(app.instance_path), app.config["UPLOAD_FOLDER"], str(user.id))
     file_path = os.path.join(file_base_path, document.name)
     path_exist = os.path.isfile(file_path)
 
@@ -105,3 +101,29 @@ def remove_document(id):
 
 
     return jsonify(succes=True)
+
+@documents.route("file/<id>", methods=["GET"])
+@jwt_required()
+def get_file(id):
+    user = Client.objects(documents__match={"_id":id}).first()
+    if not user:
+        return "document not found", 404
+    
+    document = user.documents.filter(_id=id).first()
+    if not document:
+        return "document not found", 404
+    
+    token_id = get_jwt_identity()
+    if str(user.id) != token_id:
+        return "forbidden acces", 403
+    
+    file_base_path = os.path.join(os.path.dirname(app.instance_path), app.config["UPLOAD_FOLDER"], str(user.id))
+    file_path = os.path.join(file_base_path, document.name)
+    path_exist = os.path.isfile(file_path)
+
+    if not path_exist:
+        return "file doesn't exist", 500
+    
+    return send_file(file_path)
+
+    
