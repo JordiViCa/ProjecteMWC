@@ -8,7 +8,7 @@ class Client(db.Document):
     surname2 = db.StringField(max_length=100, required=True)
     password = db.StringField(required=True)
     birthDate = db.DateTimeField(required=True)
-    phone = db.StringField(max_length=8, required=True)
+    phone = db.StringField(max_length=9, required=True)
     postalCode = db.StringField(max_length=5, required=True)
     town = db.StringField(max_length=100, required=True)
     address = db.StringField(max_length=100, required=True)

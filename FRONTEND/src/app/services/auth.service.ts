@@ -52,7 +52,8 @@ export class AuthService {
           if (el === false) {
             resolve(false);
           } else {
-            this._admin = el.admin;
+            this._admin = el.user ;
+            console.log(this._admin)
             this.tokenService.saveToken(el.token);
             resolve(true);
           }
@@ -102,19 +103,17 @@ export class AuthService {
   }
 
   getAuthHeader() {
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.getPersistedToken()}`
-      }),
-      withCredentials: true
-    }
+    return {headers: {
+      'content-type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `Bearer ${this.getPersistedToken()}`
+    }};
   };
+  
   getLoginHeader() {
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    }
+    return {headers: {
+      'content-type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    }};
   }
 }

@@ -14,7 +14,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 const routes: Routes = [
   {
     path: "",
-    component: LandingComponent
+    component: HomeComponent
   },
   {path:'arriago',component:ArriagoComponent},
   {path:'course',component:CourseComponent},

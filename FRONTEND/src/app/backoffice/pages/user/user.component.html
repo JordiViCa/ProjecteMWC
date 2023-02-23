@@ -1,28 +1,30 @@
-<h1 class="text-6xl font-thin mb-5">User - {{ user.name }} {{ user.surname }}</h1>
-<p class="opacity-50 mb-5">
-    <a [routerLink]="['/backoffice']">Backoffice</a> > <a [routerLink]="['/backoffice/users']">Users</a> > <a [routerLink]="['/backoffice/users',user.nif]" class="font-bold">User</a>
-</p>
-<div class="tableWrapper">
-    <table class="overflow-auto h-96">
-        <tr>
-            <th>NAME</th>
-            <th>VALUE</th>
-            <th class="text-center w-32">STATE</th>
-        </tr>
-        <tr *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
-            <td class="text-xl">NIF</td>
-            <td>
-                <div class="text-xl" *ngIf="user.nifDocument != undefined">
-                    {{ user.nif }}
-                </div>
-                <div *ngIf="user.nifDocument == undefined">
-                    <svg (click)="uploadDocument('nifDoocument')" xmlns="http://www.w3.org/2000/svg" class="h-10 cursor-pointer" viewBox="0 0 512 512"><title>Cloud Upload</title><path d="M320 367.79h76c55 0 100-29.21 100-83.6s-53-81.47-96-83.6c-8.89-85.06-71-136.8-144-136.8-69 0-113.44 45.79-128 91.2-60 5.7-112 43.88-112 106.4s54 106.4 120 106.4h56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 255.79l-64-64-64 64M256 448.21V207.79"/></svg>
-                </div>
-            </td>
-            <td class="w-32 text-center">
-                <svg *ngIf="user.nifDocument != undefined" xmlns="http://www.w3.org/2000/svg" class="h-10 text-green-500 mx-auto" viewBox="0 0 512 512"><title>Checkmark Circle</title><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352 176L217.6 336 160 272"/></svg>
-                <svg *ngIf="user.nifDocument == undefined" xmlns="http://www.w3.org/2000/svg" class="h-10 text-red-500 mx-auto" viewBox="0 0 512 512"><title>Close Circle</title><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/></svg>
-            </td>
-        </tr>
-    </table>
+<div *ngIf="user">
+    <h1 class="text-6xl font-thin mb-5">User - {{ user.name }} {{ user.surname1 }} {{ user.surname2 }}</h1>
+    <p class="opacity-50 mb-5">
+        <a [routerLink]="['/backoffice']">Backoffice</a> > <a [routerLink]="['/backoffice/users']">Users</a> > <a [routerLink]="['/backoffice/users',user.nif]" class="font-bold">User</a>
+    </p>
+    <div class="tableWrapper">
+        <table class="overflow-auto h-96">
+            <tr>
+                <th>NAME</th>
+                <th>VALUE</th>
+                <th class="text-center w-32">STATE</th>
+            </tr>
+            <tr>
+                <td class="text-xl">NIF</td>
+                <td>
+                    <div class="text-xl" *ngIf="user.nif != undefined">
+                        {{ user.nif }}
+                    </div>
+                    <div *ngIf="user.nif == undefined">
+                        <svg (click)="uploadDocument('nifDoocument')" xmlns="http://www.w3.org/2000/svg" class="h-10 cursor-pointer" viewBox="0 0 512 512"><title>Cloud Upload</title><path d="M320 367.79h76c55 0 100-29.21 100-83.6s-53-81.47-96-83.6c-8.89-85.06-71-136.8-144-136.8-69 0-113.44 45.79-128 91.2-60 5.7-112 43.88-112 106.4s54 106.4 120 106.4h56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 255.79l-64-64-64 64M256 448.21V207.79"/></svg>
+                    </div>
+                </td>
+                <td class="w-32 text-center">
+                    <svg *ngIf="user.nif != undefined" xmlns="http://www.w3.org/2000/svg" class="h-10 text-green-500 mx-auto" viewBox="0 0 512 512"><title>Checkmark Circle</title><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352 176L217.6 336 160 272"/></svg>
+                    <svg *ngIf="user.nif == undefined" xmlns="http://www.w3.org/2000/svg" class="h-10 text-red-500 mx-auto" viewBox="0 0 512 512"><title>Close Circle</title><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/></svg>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

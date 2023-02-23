@@ -16,11 +16,13 @@ def create_app(dev_config=False):
     from .routes.auth import auth
     from .routes.client import clients
     from .routes.admin import admins
+    from .routes.document import documents
 
     # Es registren les rutes
     app.register_blueprint(auth, url_prefix='/api/auth')
     app.register_blueprint(clients, url_prefix='/api/clients')
     app.register_blueprint(admins, url_prefix='/api/admins')
+    app.register_blueprint(documents, url_prefix='/api/documents')
 
     if not dev_config:
         # load the production config, if it exists, when not testing

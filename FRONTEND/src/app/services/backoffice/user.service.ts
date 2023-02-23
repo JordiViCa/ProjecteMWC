@@ -1,21 +1,36 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, of, tap } from 'rxjs';
+import { User } from 'src/app/models/user';
+import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private authSVC: AuthService 
+  ) { }
 
-  getToken(username: string,password: string) {
-    // TODO: Create call to backend to get token & check if user exists
-    return "1234"
+  getUsers() {
+    return this.http.get(environment.backendURL + 'api/clients', this.authSVC.getAuthHeader())
+      .pipe(
+        tap( res => res)
+    );
   }
 
-  checkToken(token: string) {
-    // TODO: Return true/false if token exists to proceed with login
-    // Check expiration of token
-    return true
+  getUser(id: string): Observable<Object> {
+    return this.http.get(environment.backendURL + 'api/clients/'+id);
   }
-  
+
+  newUser(params: User) {
+    return this.http.post(environment.backendURL + 'api/auth/register/client', JSON.stringify(params), this.authSVC.getLoginHeader())
+    .pipe(
+      tap( res => res)
+    )
+  }
+
 }

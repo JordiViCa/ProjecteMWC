@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { BackofficeLayoutComponent } from './layouts/backoffice-layout/backoffice-layout.component';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { NewUserComponent } from './pages/new-user/new-user.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FilterPipe } from '../pipes/filter.pipe';
     HomeComponent,
     UsersComponent,
     BackofficeLayoutComponent,
-    FilterPipe
+    FilterPipe,
+    NewUserComponent
   ],
   imports: [
     CommonModule,
