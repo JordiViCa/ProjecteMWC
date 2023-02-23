@@ -17,7 +17,7 @@ export class AuthService {
   private _admin!: Admin;
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private tokenService: TokenService
   ) {
 
@@ -33,7 +33,7 @@ export class AuthService {
 
   private static handleError(error: any): any {
     console.log(error)
-    // show request url 
+    // show request url
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
@@ -109,7 +109,7 @@ export class AuthService {
       'Authorization': `Bearer ${this.getPersistedToken()}`
     }};
   };
-  
+
   getLoginHeader() {
     return {headers: {
       'content-type': 'application/json',

@@ -15,7 +15,7 @@ def allowed_file(filename):
 
 documents = Blueprint("documents", __name__)
 
-@documents.route("/", methods=["GET"])
+@documents.route("", methods=["GET"])
 @jwt_required()
 def get_documents():
     print("Enter")
@@ -45,7 +45,7 @@ def get_document(id):
     return jsonify(document=document)
 
 
-@documents.route("/", methods=["POST"])
+@documents.route("", methods=["POST"])
 def create_document():
     file = request.files["file"]
     id = request.form["id"]    

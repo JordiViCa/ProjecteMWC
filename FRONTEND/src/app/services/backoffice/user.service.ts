@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private authSVC: AuthService 
+    private authSVC: AuthService
   ) { }
 
   getUsers() {

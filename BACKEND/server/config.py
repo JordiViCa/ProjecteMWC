@@ -8,6 +8,7 @@ class Config:
     MONGODB_HOST = os.getenv("DB_URI")
     UPLOAD_FOLDER = "server/uploads/"
     MAX_CONTENT_LENGTH = 15*1000*1000
+    CORS_HEADERS = "Content-Type"
     
 class ProdConf(Config):
     SECRET_KEY= os.getenv("SECRET_KEY")
