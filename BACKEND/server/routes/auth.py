@@ -88,16 +88,20 @@ def register_admin():
 
 
 @auth.route('/register/client', methods=['POST'])
+@jwt_required()
 def register_client():
+    token_id = get_jwt_identity()
+    admin = Admin.objects(id=token_id)
+    if not admin:
+        return "forbidden access", 403
     body = request.get_json()
     client = Client(**body)
     
     if not (client.email or client.nif):
         return "email and nif are empty, at least one must be provided", 400
 
-    # [TODO] full password checking
     if not client.password:
-        return "password not correct", 500
+        return "password must be provided", 400
     
     client.password = generate_password_hash(client.password)
     

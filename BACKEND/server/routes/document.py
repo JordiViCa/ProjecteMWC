@@ -69,7 +69,7 @@ def create_document():
         return str(e), 500
     
     if not path_exist:
-        doc = Document(userId=str(user.id), name=file_name)
+        doc = Document(userId=str(user.id), name=file_name, path=file_path)
         user.documents.append(doc)
         user.save()
     
