@@ -1,0 +1,56 @@
+.arraigo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    height: 100%;
+}
+.page{
+    background-color: rgb(27, 43, 90);
+}
+.cardh{
+    height: 360px;
+    
+}
+.cardh img {
+    height: 200px;
+    padding-bottom: 15px;
+}
+
+h1{
+    color: #f5eeee;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 25px;
+
+}
+a {
+    text-align: center;
+    
+}
+
+.card-btn {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn :hover{
+    background-color: rgb(138, 139, 145);}
+
+.btn{
+    background-color:rgb(26, 24, 77);
+}
+
+
+
+@media screen and (max-width:600px) {
+    .card{
+        padding: 50px 10px;
+        
+    }
+    .page{
+        margin-bottom: 50px;
+    }
+}

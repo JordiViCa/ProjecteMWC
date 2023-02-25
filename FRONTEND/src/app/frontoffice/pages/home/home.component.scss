@@ -6,28 +6,28 @@ object-fit: cover;
 }
 .homecontent{
     position: absolute;
-    top: 50%;
-    left:40%;
+    top: 45%;
+    left:50%;
     transform: translate(-50%,-50%);
     text-align: center;
 
 }
 
 .homecontent h1{
-    color: rgb(168, 146, 4);
+    color: rgb(239, 224, 128);
     font-size: 40px;
 
 }
 
 .homecontent h2{
-    color: rgb(89, 76, 4);
+    color: rgb(8, 8, 8);
     font-size: 40px;
-    padding-top: 15px;
+    padding-top: 10px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
     margin-top: 15px;
-    background-color: rgb(253, 255, 255);
+    background-color:white;
     border-radius: 90px;
 
 }
@@ -35,14 +35,14 @@ object-fit: cover;
 .homecontent a{
     margin-top: 30px;
     font-size: 28px;
-    background-color:rgb(177, 130, 115);
+    background-color:rgb(232, 230, 147);
 
 
 }
 
 .homecontent:hover a{
     
-    background-color:rgb(167, 160, 158);
+    background-color:rgb(255, 255, 255);
 
 
 }
