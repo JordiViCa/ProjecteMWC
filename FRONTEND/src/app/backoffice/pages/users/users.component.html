@@ -15,7 +15,7 @@
             <th colspan="1">EMAIL</th>
             <th colspan="1">NIF</th>
         </tr>
-        <tr *ngFor="let user of users | filterUsers:buscador" [routerLink]="['/backoffice','users',user.nif]" routerLinkActive="router-link-active" >
+        <tr *ngFor="let user of users | filterUsers:buscador" [routerLink]="['/backoffice','users',user._id.$oid]" routerLinkActive="router-link-active" >
             <td colspan="1">{{ user.name }}</td>
             <td colspan="1">{{ user.surname1 }} {{ user.surname2 }}</td>
             <td colspan="1">{{ user.phone }}</td>

@@ -11,24 +11,26 @@ import { UserService } from 'src/app/services/backoffice/user.service';
 })
 export class UserComponent implements OnInit {
   user!: User;
-
+  id: string;
   constructor(
     private userSVC: UserService,
     private route: ActivatedRoute,
     private documentSVC: DocumentService
   ) {
-    this.userSVC.getUser(this.route.snapshot.paramMap.get('id')!).subscribe(
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.userSVC.getUser(this.id).subscribe(
       (el: any) => {
         this.user = el;
         console.log(el)
       }
     )
-    this.documentSVC.getDocuments().subscribe(
+    /*
+    this.documentSVC.getDocuments(this.id).subscribe(
       (el: any) => {
         console.log(el)
       }
     )
-
+    */
   }
 
   ngOnInit(): void {

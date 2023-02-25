@@ -24,24 +24,37 @@ export class AuthService {
   }
 
   async isLoggedIn(): Promise<boolean> {
-    return this._user != null
+    return new Promise(resolve => this.getActualUser().subscribe(
+      (el: any) => {
+        if (el != false && el.type == "Client") {
+          this._user = el;
+        }
+        console.log("Log",this._user != null)
+        console.log(el)
+        resolve(this._user != null);
+      }
+    ));
   }
 
   async isLoggedInAdmin(): Promise<boolean> {
-    return this._admin != null
+    return new Promise(resolve => this.getActualUser().subscribe(
+      (el: any) => {
+        if (el != false && el.type == "Admin") {
+          this._admin = el.data;
+        }
+        console.log("Log",this._admin != null,el.type == "Admin")
+        console.log(el)
+        resolve(this._admin != null);
+      }
+    ));
   }
 
-  private static handleError(error: any): any {
-    console.log(error)
-    // show request url
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `Message: ${error.message}, Details: ${error.details}`);
-    }
-    return throwError(() => new Error('Something bad happened; please try again later.'))
+  public getActualUser(): Observable<any> {
+    return this.http.get(environment.backendURL + "/api/auth/current-user", this.getAuthHeader())
+    .pipe(
+      tap(res => res),
+      catchError(() => of (false))
+    );
   }
 
   async attemptLogin(loginData: any, admin: boolean = false): Promise<boolean> {

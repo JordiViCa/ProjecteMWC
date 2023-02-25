@@ -13,8 +13,8 @@ export class DocumentService {
     private authSVC: AuthService
   ) { }
 
-  getDocuments() {
-    return this.http.get(environment.backendURL + 'api/documents', this.authSVC.getAuthHeader())
+  getDocuments(id: any) {
+    return this.http.get(environment.backendURL + '/api/documents', this.authSVC.getAuthHeader())
       .pipe(
         tap( res => res)
     );
