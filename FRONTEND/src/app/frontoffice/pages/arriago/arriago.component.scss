@@ -24,7 +24,15 @@ a {
     
 }
 
-.btn{
+.card-btn {
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
+.btn :hover{
+    background-color: rgb(138, 139, 145);}
+
+.btn{
+    background-color:rgb(26, 24, 77);
+}
