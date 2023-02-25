@@ -1,19 +1,11 @@
-<section class="course">
-    <div class="container">
-        <h1 class="text-center">
-            All Courses
-        </h1>
-        <div class="row mt-5" >
-            <div class="col-lg-4" *ngFor="let cs of course">
-                <div class="box shadow-sm">
-                    <img src="{{cs.image}}" width="100%" height="10px">
-                    <h3 class="mt-2">  {{cs.name}}</h3>
-                    <p class="mt-2">{{cs.description}}</p>
-                    <button class="btn btn-primary btn-sm mt-2">Watch now</button>
-
-                </div>
-            </div>
-
+<h1 class="text-center text-3xl md:text-6xl font-extralight text-blue-800 mt-10 mb-4 uppercase w-full select-none">Courses</h1>
+<div class="flex flex-row flex-wrap justify-center gap-10 select-none mt-10">
+    <a *ngFor="let cs of course" href="{{cs.url}}" target="_blank" class="max-w-sm flex flex-col rounded overflow-hidden shadow-lg transition-all hover:shadow-2xl duration-700">
+        <img class="max-h-[300px]" src="{{cs.image}}" alt="...">
+        <div class="px-6 py-4 flex flex-col">
+            <div class="font-bold text-xl mb-2 text-center">{{cs.name}}</div>
+            <p>{{cs.description}}</p>
+            <p class=" bg-blue-100 hover:bg-blue-200 shadow-md hover:shadow-xl transition-all duration-500 py-2 px-4 rounded-full mx-auto">Open</p>
         </div>
-    </div>
-</section>
+    </a>
+</div>

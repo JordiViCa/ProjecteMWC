@@ -1,38 +1,5 @@
-.arraigo{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 70px;
-    padding-bottom: 70px;
-    
-    
-   
-}
-.page{
-    background-color: rgb(27, 43, 90);
-}
-
-h1{
-    color: #f5eeee;
-    text-align: center;
-    font-size: 50px;
-    padding-top: 25px;
-
-}
-a {
-    text-align: center;
-    
-}
-
-.card-btn {
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.btn :hover{
-    background-color: rgb(138, 139, 145);}
-
-.btn{
-    background-color:rgb(26, 24, 77);
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
