@@ -12,6 +12,8 @@ ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg'}
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+def get_extension(filename):
+    return filename.rsplit('.', 1)[1].lower()
 
 documents = Blueprint("documents", __name__)
 
@@ -46,6 +48,9 @@ def get_document(id):
 @jwt_required()
 def create_document():
     file = request.files["file"]
+    extension = get_extension(file.filename)
+    name = request.form["name"]
+    filename = name + "." + extension
     id = get_jwt_identity()   
 
     user = Client.objects(id=id).first()
@@ -58,7 +63,7 @@ def create_document():
     
     file_base_path = os.path.join(os.path.dirname(app.instance_path), app.config["UPLOAD_FOLDER"], str(user.id))
     os.makedirs(file_base_path, exist_ok=True)
-    file_name = secure_filename(file.filename)
+    file_name = secure_filename(filename)
     file_path = os.path.join(file_base_path, file_name)
     
     path_exist = os.path.isfile(file_path)
@@ -90,8 +95,7 @@ def remove_document(id):
     if str(user.id) != token_id:
         return "forbidden acces", 403
     
-    file_base_path = os.path.join(os.path.dirname(app.instance_path), app.config["UPLOAD_FOLDER"], str(user.id))
-    file_path = os.path.join(file_base_path, document.name)
+    file_path = document.path
     path_exist = os.path.isfile(file_path)
 
     if path_exist:   
