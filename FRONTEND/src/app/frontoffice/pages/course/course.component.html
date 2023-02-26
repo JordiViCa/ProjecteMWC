@@ -1,6 +1,6 @@
 <h1 class="text-center text-3xl md:text-6xl font-extralight text-blue-800 mt-10 mb-4 uppercase w-full select-none">Courses</h1>
 <div class="flex flex-row flex-wrap justify-center gap-10 select-none mt-10">
-    <a *ngFor="let cs of course" href="{{cs.url}}" target="_blank" class="max-w-sm flex flex-col rounded overflow-hidden shadow-lg transition-all hover:shadow-2xl duration-700">
+    <a *ngFor="let cs of course" href="{{cs.url}}" target="_blank" class="bg-[#ffffff70] max-w-sm flex flex-col rounded overflow-hidden shadow-lg transition-all hover:shadow-2xl duration-700">
         <img class="max-h-[300px]" src="{{cs.image}}" alt="...">
         <div class="px-6 py-4 flex flex-col">
             <div class="font-bold text-xl mb-2 text-center">{{cs.name}}</div>

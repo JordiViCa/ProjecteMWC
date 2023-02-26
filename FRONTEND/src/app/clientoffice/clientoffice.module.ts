@@ -6,13 +6,17 @@ import { ClientOfficeLayoutComponent } from './layout/client-office-layout/clien
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './pages/user/user.component';
+import { DocumentsComponent } from './pages/documents/documents.component';
 
 
 @NgModule({
   declarations: [
     ClientOfficeLayoutComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent,
+    DocumentsComponent
   ],
   imports: [
     CommonModule,
