@@ -1,34 +1,56 @@
-.course{
-    background-color: rgb(236, 211, 190);
-    padding: 50px 100px;
+.arraigo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    height: 100%;
 }
-h1{
-    font-size: 40px;
+.page{
+    background-color: rgb(27, 43, 90);
+}
+.cardh{
+    height: 360px;
+    
+}
+.cardh img {
+    height: 300px;
+    padding-bottom: 15px;
 }
 
-.box{
-    background-color: azure;
-    padding: 15px 25px;
-    height: 540px;
-    margin-bottom: 50px;
+h1{
+    color: #f5eeee;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 25px;
+
 }
-.box img{
-    height: 400px;
+a {
+    text-align: center;
+    
 }
+
+.card-btn {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn :hover{
+    background-color: rgb(138, 139, 145);}
 
 .btn{
-    background-color: rgb(175, 129, 102);
-}
-.btn:hover{
-    background-color: rgb(136, 99, 78);
+    background-color:rgb(26, 24, 77);
 }
 
+
+
 @media screen and (max-width:600px) {
-    .course{
+    .card{
         padding: 50px 10px;
         
     }
-    .box{
+    .page{
         margin-bottom: 50px;
     }
 }
