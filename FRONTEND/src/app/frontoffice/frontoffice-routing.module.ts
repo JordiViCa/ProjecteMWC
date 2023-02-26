@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './pages/about/about.component';
+import { AboutComponent } from './pages/information/about.component';
 import { ArriagoComponent } from './pages/arriago/arriago.component';
 import { CourseComponent } from './pages/course/course.component';
 import { FooterComponent } from './pages/footer/footer.component';
