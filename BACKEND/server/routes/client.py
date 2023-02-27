@@ -58,14 +58,16 @@ def update_client(id):
     
     body = request.get_json()
     body.pop("password", None)
+    body.pop("email", None)
+    body.pop("nif", None)
 
     user = Client.objects(id=id).first()
     if not user:
         return "user not found", 404
     try:
         user.update(**body)
-    except InvalidQueryError:
-        return "bad request", 400
+    except InvalidQueryError as e:
+        return str(e), 400
     except Exception as e:
         return str(e), 500
 
