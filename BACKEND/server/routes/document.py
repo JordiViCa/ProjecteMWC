@@ -46,6 +46,7 @@ def get_document(id):
 @jwt_required()
 def create_document():
     file = request.files["file"]
+    name = request.form.get('name')
     id = get_jwt_identity()   
 
     user = Client.objects(id=id).first()
@@ -68,10 +69,10 @@ def create_document():
     except Exception as e:
         return str(e), 500
     
-    if not path_exist:
-        doc = Document(userId=str(user.id), name=file_name, path=file_path)
-        user.documents.append(doc)
-        user.save()
+    #if not path_exist:
+    doc = Document(userId=str(user.id), name=name ,fileName=file_name, path=file_path)
+    user.documents.append(doc)
+    user.save()
     
     return jsonify(success=True)
 

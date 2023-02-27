@@ -26,8 +26,19 @@ export class UserService {
     return this.http.get(environment.backendURL + 'api/clients/'+id, this.authSVC.getAuthHeader());
   }
 
+  getMe() {
+    return this.http.get(environment.backendURL + 'api/auth/current-user', this.authSVC.getAuthHeader());
+  }
+
   newUser(params: User) {
     return this.http.post(environment.backendURL + 'api/auth/register/client', JSON.stringify(params), this.authSVC.getAuthHeader())
+    .pipe(
+      tap( res => res)
+    )
+  }
+
+  updateUser(params: User,id: any) {
+    return this.http.put(environment.backendURL + 'api/clients/'+id, JSON.stringify(params), this.authSVC.getAuthHeader())
     .pipe(
       tap( res => res)
     )
