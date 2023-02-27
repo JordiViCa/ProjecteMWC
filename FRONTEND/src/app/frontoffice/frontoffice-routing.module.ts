@@ -1,34 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './pages/information/about.component';
+import { FrontofficelayoutComponent } from './layout/frontofficelayout/frontofficelayout.component';
 import { ArriagoComponent } from './pages/arriago/arriago.component';
 import { CourseComponent } from './pages/course/course.component';
-import { FooterComponent } from './pages/footer/footer.component';
-import { HeaderComponent } from './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { AboutComponent } from './pages/information/about.component';
 
 
 const routes: Routes = [
   {
-    path: "",
-    component: HomeComponent
-  },
-  {path:'arriago',component:ArriagoComponent},
-  {path:'course',component:CourseComponent},
-  {path:'footer',component:FooterComponent},
-  {path:'header',component:HeaderComponent},
-  {path:'home',component:HomeComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent},
-  {path:'about',component:AboutComponent},
-  {
-    path: ":idiom",
+    path: '',
+    component: FrontofficelayoutComponent,
     children: [
       {
-        path: "login",
-        component: LoginComponent
+        path: "",
+        component: HomeComponent
+      },
+      {
+        path:'arriago',
+        component:ArriagoComponent
+      },
+      {
+        path:'course',
+        component:CourseComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       }
     ]
   }

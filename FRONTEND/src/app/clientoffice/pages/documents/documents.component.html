@@ -1,0 +1,67 @@
+<div *ngIf="user" class="px-4 py-16 md:p-10 w-full">
+    <h1 class="font-thin text-blue-700 text-4xl md:text-6xl w-full mb-5">Documents - {{ user.name }} {{ user.surname1 }}</h1>
+    <p class="opacity-50 mb-5">
+        <a [routerLink]="['/client']">Client</a> > <a [routerLink]="['/client/documents']" class="font-bold">Documents</a>
+    </p>
+    <button (click)="upload = !upload" class="flex"><span class="my-auto mr-2">Upload file</span> <svg xmlns="http://www.w3.org/2000/svg" class="h-10" viewBox="0 0 512 512"><title>Cloud Upload</title><path d="M320 367.79h76c55 0 100-29.21 100-83.6s-53-81.47-96-83.6c-8.89-85.06-71-136.8-144-136.8-69 0-113.44 45.79-128 91.2-60 5.7-112 43.88-112 106.4s54 106.4 120 106.4h56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 255.79l-64-64-64 64M256 448.21V207.79"/></svg></button>
+    <div class="tableWrapper w-full">
+        <table class="overflow-auto w-full text-sm text-left text-gray-500 border-separate border-spacing-1">
+            <tr class="h-8">
+                <th>NAME</th>
+                <th>FILE</th>
+                <th>STATE</th>
+                <th>ACTIONS</th>
+            </tr>
+            <tr *ngFor="let document of user.documents">
+                <td class="text-xl h-5"><p>{{ document.name }}</p></td>
+                <td>
+                    <div class="text-xl my-auto mr-4" *ngIf="document.path">
+                        {{ document.fileName }}
+                    </div>
+                </td>
+                <td class="text-center">
+                    <svg *ngIf="document.path != undefined" xmlns="http://www.w3.org/2000/svg" class="h-10 text-green-500 mx-auto" viewBox="0 0 512 512"><title>Checkmark</title><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M352 176L217.6 336 160 272"/></svg>
+                    <svg *ngIf="document.path == undefined" xmlns="http://www.w3.org/2000/svg" class="h-10 text-red-500 mx-auto" viewBox="0 0 512 512"><title>No document</title><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128"/></svg>
+                </td>
+                <td>
+                    <div class="flex justify-around" *ngIf="document.path">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 cursor-pointer" viewBox="0 0 512 512"><title>Download</title><path d="M320 336h76c55 0 100-21.21 100-75.6s-53-73.47-96-75.6C391.11 99.74 329 48 256 48c-69 0-113.44 45.79-128 91.2-60 5.7-112 35.88-112 98.4S70 336 136 336h56M192 400.1l64 63.9 64-63.9M256 224v224.03" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 cursor-pointer" viewBox="0 0 512 512"><title>Trash</title><path d="M112 112l20 320c.95 18.49 14.4 32 32 32h184c17.67 0 30.87-13.51 32-32l20-320" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M80 112h352"/><path d="M192 112V72h0a23.93 23.93 0 0124-24h80a23.93 23.93 0 0124 24h0v40M256 176v224M184 176l8 224M328 176l-8 224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                    </div>
+                    <div class="flex justify-around" *ngIf="!document.path">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 cursor-pointer" viewBox="0 0 512 512"><title>Upload</title><path d="M320 367.79h76c55 0 100-29.21 100-83.6s-53-81.47-96-83.6c-8.89-85.06-71-136.8-144-136.8-69 0-113.44 45.79-128 91.2-60 5.7-112 43.88-112 106.4s54 106.4 120 106.4h56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 255.79l-64-64-64 64M256 448.21V207.79"/></svg>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div *ngIf="upload" id="close" class="absolute top-0 left-0 flex backdrop-blur-sm w-full h-full" (click)="closePopup($event)">
+    <div class="mx-auto my-auto bg-gray-50 p-10 rounded-md">
+        <h1 class="text-xl font-bold">Upload file</h1>
+        <form [formGroup]="uploadForm">
+            <div class="flex w-full flex-col mb-5">
+                <label class="mb-2 text-gray-500" for="nameSelector">Name</label>
+                <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="nameSelector">
+            </div>
+            <div class="flex w-full flex-col mb-5">
+                <label class="mb-2 text-gray-500" for="name">Other name</label>
+                <input [readonly]="uploadForm.value.nameSelector != 'other'" class="border disabled:opacity-5 disabled:hover:shadow-md disabled:focus:shadow-md bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="name">
+            </div>
+            <div class="flex w-full flex-col mb-5">
+                <label for="file" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        <p *ngIf="!uploadForm.value.file" class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        <p *ngIf="file" class="mb-2 text-sm text-gray-500 dark:text-gray-400">{{ file.name }}</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG, JPEG or PDF</p>
+                    </div>
+                    <input id="file" type="file" class="hidden" (change)="loadImage($event)" formControlName="file" />
+                </label>
+            </div>
+            <div class="flex flex-row justify-end mt-12 mb-5 w-full">
+                <button [disabled]="!uploadForm.valid" type="submit" (click)="uploadDocument()" class="disabled:opacity-50 disabled:hover:bg-blue-500 px-8 py-3 text-white text-lg bg-blue-500 hover:bg-blue-700 transition-all rounded-md shadow-md">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>

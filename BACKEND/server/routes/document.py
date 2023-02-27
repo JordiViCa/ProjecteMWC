@@ -49,7 +49,7 @@ def get_document(id):
 def create_document():
     file = request.files["file"]
     extension = get_extension(file.filename)
-    name = request.form["name"]
+    name = request.form.get('name')
     filename = name + "." + extension
     id = get_jwt_identity()   
 
@@ -73,10 +73,10 @@ def create_document():
     except Exception as e:
         return str(e), 500
     
-    if not path_exist:
-        doc = Document(userId=str(user.id), name=file_name, path=file_path)
-        user.documents.append(doc)
-        user.save()
+    #if not path_exist:
+    doc = Document(userId=str(user.id), name=name ,fileName=file_name, path=file_path)
+    user.documents.append(doc)
+    user.save()
     
     return jsonify(success=True)
 

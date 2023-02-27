@@ -123,6 +123,12 @@ export class AuthService {
     }};
   };
 
+  getAuthHeaderDocument(size: any) {
+    return {headers: {
+      'Authorization': `Bearer ${this.getPersistedToken()}`
+    }};
+  };
+
   getLoginHeader() {
     return {headers: {
       'content-type': 'application/json',

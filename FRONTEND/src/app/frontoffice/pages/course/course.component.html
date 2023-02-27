@@ -1,35 +1,10 @@
-<section class="page">
-    <div> 
-     <h1>All Courses</h1>
-    </div>
- 
- <div class="arraigo ">
- <section class="cardh">
- <div class="card" style="width: 18rem;">
-     <img src="https://bebooks.io/wp-content/uploads/2021/02/libro-aprender-catalan-rapido.jpg" class="card-img-top" alt="...">
-     <p>Catalan</p>
-     <div class="card-btn">
-       <a href="https://www.parla.cat/pres_catalaenlinia/AppPHP/login/index.php?lang=en" class="btn btn-primary">Open</a>
-     </div>
-   </div>
- </section>
-
- <section class="cardh">
-    <div class="card" style="width: 18rem;">
-        <img src="https://static.fnac-static.com/multimedia/Images/ES/NR/1d/8b/63/6523677/1507-1.jpg" class="card-img-top" alt="...">
-        <p>Conocimiento Entorno</p>
-        <div class="card-btn">
-          <a href="https://www.cpnl.cat/es/cursos-de-catala/acolliment-linguistic/" class="btn btn-primary">Open</a>
+<h1 class="text-center text-3xl md:text-6xl font-extralight text-blue-800 mt-10 mb-4 uppercase w-full select-none">Courses</h1>
+<div class="flex flex-row flex-wrap justify-center gap-10 select-none mt-10">
+    <a *ngFor="let cs of course" href="{{cs.url}}" target="_blank" class="bg-[#ffffff70] max-w-sm flex flex-col rounded overflow-hidden shadow-lg transition-all hover:shadow-2xl duration-700">
+        <img class="max-h-[300px]" src="{{cs.image}}" alt="...">
+        <div class="px-6 py-4 flex flex-col">
+            <div class="font-bold text-xl mb-2 text-center">{{cs.name}}</div>
+            <p class=" bg-blue-100 hover:bg-blue-200 shadow-md hover:shadow-xl transition-all duration-500 py-2 px-4 rounded-full mx-auto">Open</p>
         </div>
-      </div>
-    </section>
-
-    <section class="cardh">
-        <div class="card" style="width: 18rem;">
-            <img src="https://atelierlibrosjuridicos.com/wp-content/uploads/2022/01/9788413593180_PORTADA_EXCEDENCIA_LABORAL_PEQUE-min.jpg" alt="...">
-            <p>Conocimiento Laboral</p>
-            <div class="card-btn">
-              <a href="https://www.cpnl.cat/es/cursos-de-catala/acolliment-linguistic/" class="btn btn-primary">Open</a>
-            </div>
-          </div>
-        </section>
+    </a>
+</div>

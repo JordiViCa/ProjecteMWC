@@ -1,29 +1,31 @@
-<h1 class="text-6xl font-thin mb-5">Users</h1>
-<p class="opacity-50 mb-5">
-    <a [routerLink]="['/backoffice']">Backoffice</a> > <a [routerLink]="['/backoffice/users']" class="font-bold">Users</a>
-</p>
-<div class="flex flex-col mb-2">
-    <label class="text-3xl font-thin" for="buscador">Filter</label>
-    <input class="p-2 w-1/3 border-b border-gray-300" type="text" name="buscador" id="buscador" [(ngModel)]="buscador" (change)="updateUsers()">
-</div>
-<div class="tableWrapper">
-    <table>
-        <tr>
-            <th colspan="1">NAME</th>
-            <th colspan="1">SURNAME</th>
-            <th colspan="1">PHONE</th>
-            <th colspan="1">EMAIL</th>
-            <th colspan="1">NIF</th>
-        </tr>
-        <tr *ngFor="let user of users | filterUsers:buscador" [routerLink]="['/backoffice','users',user._id.$oid]" routerLinkActive="router-link-active" >
-            <td colspan="1">{{ user.name }}</td>
-            <td colspan="1">{{ user.surname1 }} {{ user.surname2 }}</td>
-            <td colspan="1">{{ user.phone }}</td>
-            <td colspan="1">{{ user.email }}</td>
-            <td colspan="1">{{user.nif}}</td>
-        </tr>
-        <tr *ngIf="(users | filterUsers:buscador).length == 0">
-            <td class="text-center" colspan="5">No hi han usuaris</td>
-        </tr>
-    </table>
+<div class="px-4 py-16 md:p-10">
+    <h1 class="text-6xl font-thin mb-5">Users</h1>
+    <p class="opacity-50 mb-5">
+        <a [routerLink]="['/backoffice']">Backoffice</a> > <a [routerLink]="['/backoffice/users']" class="font-bold">Users</a>
+    </p>
+    <div class="flex flex-col mb-2">
+        <label class="text-3xl font-thin" for="buscador">Filter</label>
+        <input class="p-2 w-1/3 border-b border-gray-300" type="text" name="buscador" id="buscador" [(ngModel)]="buscador" (change)="updateUsers()">
+    </div>
+    <div class="tableWrapper">
+        <table>
+            <tr>
+                <th colspan="1">NAME</th>
+                <th colspan="1">SURNAME</th>
+                <th colspan="1">PHONE</th>
+                <th colspan="1">EMAIL</th>
+                <th colspan="1">NIF</th>
+            </tr>
+            <tr *ngFor="let user of users | filterUsers:buscador" [routerLink]="['/backoffice','users',user._id.$oid]" routerLinkActive="router-link-active" >
+                <td colspan="1">{{ user.name }}</td>
+                <td colspan="1">{{ user.surname1 }} {{ user.surname2 }}</td>
+                <td colspan="1">{{ user.phone }}</td>
+                <td colspan="1">{{ user.email }}</td>
+                <td colspan="1">{{user.nif}}</td>
+            </tr>
+            <tr *ngIf="(users | filterUsers:buscador).length == 0">
+                <td class="text-center" colspan="5">No hi han usuaris</td>
+            </tr>
+        </table>
+    </div>
 </div>
