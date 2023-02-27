@@ -1,49 +1,46 @@
-<form [formGroup]="newUserForm" class="p-10 flex flex-wrap justify-between   w-full" (ngSubmit)="sendFormRegister()">
-    <div class="flex w-[48%] flex-col mb-5">
+<form [formGroup]="newUserForm" class="px-4 py-16 md:p-10 flex flex-wrap justify-between w-full" (ngSubmit)="sendFormRegister()">
+    <h1 class="font-thin text-blue-700 text-4xl md:text-6xl w-full mb-5">New user</h1>
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="name">Name</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="name">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="name">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="password">Password</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="password">
-    </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="surname1">Surname</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="surname1">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="surname1">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="surname2">Second Surname</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="surname2">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="surname2">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="birthDate">Birth Date</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="date" formControlName="birthDate">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="date" formControlName="birthDate">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="phone">Phone</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="phone">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="phone">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="postalCode">Postal code</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="postalCode">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="postalCode">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="town">Town</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="town">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="town">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="address">Address</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="address">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="address">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="email">Email</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="email">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="email">
     </div>
-    <div class="flex w-[48%] flex-col mb-5">
+    <div class="flex w-full md:w-[48%] flex-col mb-5">
         <label class="mb-2 text-gray-500" for="nif">Nif</label>
-        <input class="bg-gray-100 border border-[#e4e9ee] rounded-sm p-2" type="text" formControlName="nif">
+        <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="nif">
     </div>
     <div class="flex flex-row justify-end mt-12 mb-5 w-full">
-        <button type="submit" class="py-[0.375rem] px-[0.75rem] text-white font-normal bg-[#0d6efd] hover:bg-[#0b5ed7] transition-all rounded-md shadow-md">Register</button>
+        <button type="submit" class=" px-8 py-3 text-white text-lg bg-blue-500 hover:bg-blue-700 transition-all rounded-md shadow-md">Create user</button>
     </div>
 </form>

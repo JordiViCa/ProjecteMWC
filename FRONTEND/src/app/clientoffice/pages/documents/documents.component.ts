@@ -55,10 +55,17 @@ export class DocumentsComponent {
           this.userSVC.getMe().subscribe(
             (el: any) => {
               this.user = el.data;
+              this.upload = false;
             }
           );
         }
       )
+    }
+  }
+
+  closePopup(event: any) {
+    if (event.target.id == "close") {
+      this.upload = !this.upload;
     }
   }
 
