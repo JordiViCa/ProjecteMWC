@@ -6,7 +6,7 @@ import { FrontofficelayoutComponent } from './layout/frontofficelayout/frontoffi
 import { HomeComponent } from './pages/home/home.component';
 import { CourseComponent } from './pages/course/course.component';
 import { ArriagoComponent } from './pages/arriago/arriago.component';
-import { AboutComponent } from './pages/about/about.component';
+import { AboutComponent } from './pages/information/about.component';
 
 
 

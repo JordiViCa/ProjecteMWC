@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   show: true,
-  backendURL: 'https://localhost:5000/'
+  backendURL: 'https://api.advena.cat:5000/'
 };
