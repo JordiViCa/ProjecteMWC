@@ -12,6 +12,7 @@ export class UserComponent {
 
   editUserForm: FormGroup;
   userID!: string;
+  activated!: boolean;
   constructor(
     private formBuilder: FormBuilder,
     private userSVC: UserService
@@ -35,6 +36,7 @@ export class UserComponent {
       (el: any) => {
         console.log("CurrentUser",el)
         this.userID = el.data._id.$oid;
+        this.activated = el.data.activated;
         this.editUserForm.get("name")?.patchValue(el.data.name);
         this.editUserForm.get("surname1")?.patchValue(el.data.surname1);
         this.editUserForm.get("surname2")?.patchValue(el.data.surname2);
@@ -60,7 +62,8 @@ export class UserComponent {
       town: this.editUserForm.value.town,
       address: this.editUserForm.value.address,
       email: this.editUserForm.value.email,
-      nif: this.editUserForm.value.nif
+      nif: this.editUserForm.value.nif,
+      activated: this.activated
     }
     this.userSVC.updateUser(params,this.userID).subscribe(
       (el: any) => {

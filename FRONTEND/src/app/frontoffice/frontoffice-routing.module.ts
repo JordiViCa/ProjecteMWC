@@ -5,6 +5,7 @@ import { ArriagoComponent } from './pages/arriago/arriago.component';
 import { CourseComponent } from './pages/course/course.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/information/about.component';
+import { NewUserComponent } from './pages/new-user/new-user.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent
-      }
+      },
+      { path: 'register', component: NewUserComponent}
     ]
   }
 ];

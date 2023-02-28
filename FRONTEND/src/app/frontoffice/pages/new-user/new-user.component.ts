@@ -43,7 +43,8 @@ export class NewUserComponent implements OnInit {
       town: this.newUserForm.value.town,
       address: this.newUserForm.value.address,
       email: this.newUserForm.value.email,
-      nif: this.newUserForm.value.nif
+      nif: this.newUserForm.value.nif,
+      activated: false
     }
     this.userSVC.newUser(params).subscribe(
       (el: any) => {

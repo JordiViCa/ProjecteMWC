@@ -10,14 +10,9 @@ export class FilterPipe implements PipeTransform {
       return array;
     }
     let arr2 = array.filter((el: any) => {
-      let keys = Object.keys(el);
-      let includesText = false;
-      keys.forEach(key => {
-        if (el[key].includes(value)) {
-          includesText = true
-        }
-      });
-      if (includesText) {
+      let values = Object.values(el);
+      let values2 = values.join('');
+      if (values2.toLowerCase().includes(value)) {
         return el
       }
     });

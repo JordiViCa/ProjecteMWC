@@ -11,8 +11,9 @@ export class User {
         public address: string,
         public email: string,
         public nif: string,
+        public activated: boolean,
         public documents?: Array<any>,
-        public password?: string
+        public password?: string,
     ) {
 
     }

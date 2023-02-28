@@ -31,7 +31,7 @@ export class UserService {
   }
 
   newUser(params: User) {
-    return this.http.post(environment.backendURL + 'api/auth/register/client', JSON.stringify(params), this.authSVC.getAuthHeader())
+    return this.http.post(environment.backendURL + 'api/auth/register/client', JSON.stringify(params))
     .pipe(
       tap( res => res)
     )
