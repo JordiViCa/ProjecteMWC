@@ -85,3 +85,23 @@ def get_client_documents(id):
         return "forbidden access", 403
     
     return jsonify(documents=user.documents)
+
+@clients.route("<id>/toggle", methods=["GET"])
+@jwt_required()
+def toggle_client_activated(id):
+    token_id = get_jwt_identity()
+    admin = Admin.objects(id=token_id).first()
+    if not admin:
+        return "forbidden access", 403
+
+    user = Client.objects(id=id).first()
+    if not user:
+        return "user not found", 404
+    
+    if str(user.id) != token_id and not admin:
+        return "forbidden access", 403
+    
+    user.activated = not user.activated
+    user.save()
+    
+    return jsonify(success=True)

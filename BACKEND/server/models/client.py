@@ -15,3 +15,4 @@ class Client(db.Document):
     email = db.StringField(max_length=100, unique=True, sparse=True)
     nif = db.StringField(max_length=100, unique=True, sparse=True)
     documents = db.EmbeddedDocumentListField(Document)
+    activated = db.BooleanField(default=False)

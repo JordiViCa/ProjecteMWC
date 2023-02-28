@@ -5,7 +5,7 @@ from ..models.client import Client
 from ..models.admin import Admin
 import json
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, verify_jwt_in_request
-from mongoengine.errors import NotUniqueError
+from mongoengine.errors import NotUniqueError, ValidationError
 
 auth = Blueprint("auth", __name__)
 
@@ -48,33 +48,14 @@ def login(userType):
     return jsonify(token=access_token, user=dict_user), 200
 
 
-
-    
-# @auth.route('/registrar/<string:user>', methods=['POST'])
-# def sign_in(user):
-#     nom = request.args.get("nom")
-#     email = request.args.get("email")
-#     pw = request.args.get("password")
-#     usuari = None
-
-#     if nom is None or email is None or pw is None:
-#         return "Els paramtres son incorrectes", 500
-
-#     if user == "client":
-#         if Client.objects(email=email).first():
-#             return "El client ja existeix", 500
-#         usuari = Client(nom = nom, email = email, password = generate_password_hash(pw))
-#     elif user == "admin":
-#         if Admin.objects(email=email).first():
-#             return "L'Admin ja existeix", 500        
-#         usuari = Admin(nom = nom, email = email, password = generate_password_hash(pw))
-    
-#     usuari.save()
-#     return jsonify(success=True)
-
-
 @auth.route('/register/admin', methods=['POST'])
+@jwt_required()
 def register_admin():
+    token_id = get_jwt_identity()
+    request_admin = Admin.objects(id=token_id).first()
+    if not (request_admin and request_admin.authority):
+        return "forbidden acces", 403
+    
     body = request.get_json()
     admin = Admin(**body)
     if not admin.password:
@@ -90,12 +71,7 @@ def register_admin():
 
 
 @auth.route('/register/client', methods=['POST'])
-@jwt_required()
 def register_client():
-    token_id = get_jwt_identity()
-    admin = Admin.objects(id=token_id)
-    if not admin:
-        return "forbidden access", 403
     body = request.get_json()
     client = Client(**body)
     
@@ -111,7 +87,8 @@ def register_client():
         client.save()
     except NotUniqueError as e:
         return "duplicated key", 400     
-
+    except ValidationError as e:
+        return str(e), 400  
     return jsonify(success=True), 200
 
 
