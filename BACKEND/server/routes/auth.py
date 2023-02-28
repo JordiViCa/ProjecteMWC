@@ -34,6 +34,8 @@ def login(userType):
         return "Incorrect user type, choose admin or client", 400
     if not pw:
         return "password must be provided", 400
+    if not user:
+        return "user not found", 400
 
     if not check_password_hash(user.password, pw):
         return "Invalid password", 404
