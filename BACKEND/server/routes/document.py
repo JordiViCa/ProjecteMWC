@@ -122,7 +122,7 @@ def get_file(id):
         return "forbidden acces", 403
     
     file_base_path = os.path.join(os.path.dirname(app.instance_path), app.config["UPLOAD_FOLDER"], str(user.id))
-    file_path = os.path.join(file_base_path, document.name)
+    file_path = os.path.join(file_base_path, document.fileName)
     path_exist = os.path.isfile(file_path)
 
     if not path_exist:
