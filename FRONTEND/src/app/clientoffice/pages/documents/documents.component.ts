@@ -78,6 +78,11 @@ export class DocumentsComponent {
     this.documentSVC.deleteDocument(id).subscribe(
       (el: any) => {
         //console.log(el)
+        this.userSVC.getMe().subscribe(
+          (el: any) => {
+            this.user = el.data;
+          }
+        );
       }
     )
   }
