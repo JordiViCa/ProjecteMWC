@@ -29,8 +29,8 @@ export class AuthService {
         if (el != false && el.type == "Client") {
           this._user = el;
         }
-        console.log("Log",this._user != null)
-        console.log(el)
+        //console.log("Log",this._user != null)
+        //console.log(el)
         resolve(this._user != null);
       }
     ));
@@ -42,8 +42,8 @@ export class AuthService {
         if (el != false && el.type == "Admin") {
           this._admin = el.data;
         }
-        console.log("Log",this._admin != null,el.type == "Admin")
-        console.log(el)
+        //console.log("Log",this._admin != null,el.type == "Admin")
+        //console.log(el)
         resolve(this._admin != null);
       }
     ));
@@ -61,12 +61,12 @@ export class AuthService {
     if (admin) {
       return new Promise( resolve => this.adminLogin(loginData).subscribe(
         (el: any) => {
-          console.log(el)
+          //console.log(el)
           if (el === false) {
             resolve(false);
           } else {
             this._admin = el.user ;
-            console.log(this._admin)
+            //console.log(this._admin)
             this.tokenService.saveToken(el.token);
             resolve(true);
           }

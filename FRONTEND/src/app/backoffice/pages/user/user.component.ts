@@ -22,13 +22,13 @@ export class UserComponent implements OnInit {
     this.userSVC.getUser(this.id).subscribe(
       (el: any) => {
         this.user = el;
-        console.log(el)
+        //console.log(el)
       }
     )
     /*
     this.documentSVC.getDocuments(this.id).subscribe(
       (el: any) => {
-        console.log(el)
+        //console.log(el)
       }
     )
     */
@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
   }
 
   uploadDocument(doc: any) {
-    console.log(doc)
+    //console.log(doc)
   }
 
   toggleUser() {

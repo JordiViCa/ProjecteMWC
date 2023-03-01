@@ -18,7 +18,7 @@ export class ClientAuthGuard implements CanActivate {
 
   async checkLogin(): Promise<any> {
     let logged = await this.authService.isLoggedIn()
-    console.log("AuthGuard",logged)
+    //console.log("AuthGuard",logged)
     if (!logged) {
       return this.router.parseUrl('/client/login');
     } else {

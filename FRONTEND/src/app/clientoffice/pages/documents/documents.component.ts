@@ -28,7 +28,7 @@ export class DocumentsComponent {
     });
     this.userSVC.getMe().subscribe(
       (el: any) => {
-        console.log("CurrentUser",el)
+        //console.log("CurrentUser",el)
         this.id = el.data._id.$oid;
         this.user = el.data;
       }
@@ -48,7 +48,7 @@ export class DocumentsComponent {
       }
       this.documentSVC.uploadDocument(params).subscribe(
         (el: any) => {
-          console.log(el)
+          //console.log(el)
           this.userSVC.getMe().subscribe(
             (el: any) => {
               this.user = el.data;
@@ -68,7 +68,7 @@ export class DocumentsComponent {
 
   getDocument(id: any) {
     this.documentSVC.getDocument(id).then((response: any) =>{
-        console.log(response);
+        //console.log(response);
         let el = new File([response],'test.png')
         saveAs(el,'test.png');
     });
@@ -77,7 +77,7 @@ export class DocumentsComponent {
   deleteDocument(id: any) {
     this.documentSVC.deleteDocument(id).subscribe(
       (el: any) => {
-        console.log(el)
+        //console.log(el)
       }
     )
   }

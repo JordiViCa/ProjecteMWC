@@ -37,7 +37,7 @@ export class UserComponent {
         if (date.getMonth() < 10) mm = '0'+date.getMonth();
         let dd: any = date.getDay();
         if (date.getDay() < 10) dd = '0'+date.getDay();
-        console.log("CurrentUser",el)
+        //console.log("CurrentUser",el)
         this.userID = el.data._id.$oid;
         this.activated = el.data.activated;
         this.editUserForm.get("name")?.patchValue(el.data.name);
@@ -65,13 +65,13 @@ export class UserComponent {
     }
     this.userSVC.updateUser(params,this.userID).subscribe(
       (el: any) => {
-        console.log("New User",el)
+        //console.log("New User",el)
       }
     )
   }
 
   getInvalid(name: any) {
-    console.log(this.editUserForm.value.birthDate)
+    //console.log(this.editUserForm.value.birthDate)
     let el = this.editUserForm.controls[name].invalid;
     let el2 = this.editUserForm.controls[name].touched;
     return el != false && el2 == true;

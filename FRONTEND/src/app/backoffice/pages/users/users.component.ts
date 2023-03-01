@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
   ) {
     this.userSVC.getUsers().subscribe(
       (el: any) => {
-        console.log("Users",el)
+        //console.log("Users",el)
         this.baseUsers = el;
         this.users = [...this.baseUsers];
       }
@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.users);
+    //console.log(this.users);
   }
 
   updateUsers() {

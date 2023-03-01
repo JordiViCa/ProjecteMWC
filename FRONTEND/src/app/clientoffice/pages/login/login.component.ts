@@ -36,12 +36,12 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authSVC.attemptLogin(this.loginForm.value).then(
         (el: any) => {
-          console.log("Logged",el)
+          //console.log("Logged",el)
           this.router.navigateByUrl("/client") 
         },
         (error: any) => {
           this.showErrors = true;
-          console.log(error)
+          //console.log(error)
         }
       )
     } else {

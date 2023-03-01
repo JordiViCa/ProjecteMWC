@@ -15,7 +15,7 @@ export class AdminAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<any> {
       let logged = await this.authService.isLoggedInAdmin()
-      console.log("AuthGuard",logged)
+      //console.log("AuthGuard",logged)
       if (!logged) {
         return this.router.parseUrl('/backoffice/login');
       } else {

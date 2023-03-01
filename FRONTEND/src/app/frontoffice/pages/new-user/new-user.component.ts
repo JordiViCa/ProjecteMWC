@@ -52,18 +52,18 @@ export class NewUserComponent {
     }
     this.userSVC.newUser(params).subscribe(
       (el: any) => {
-        console.log("New User",el)
+        //console.log("New User",el)
         let body = {
           email: this.newUserForm.value.email,
           password: this.newUserForm.value.password
         }
         this.authSVC.attemptLogin(body).then(
           (el: any) => {
-            console.log("Logged",el)
+            //console.log("Logged",el)
             this.router.navigateByUrl("/client") 
           },
           (error: any) => {
-            console.log(error)
+            //console.log(error)
           }
         )
       }
