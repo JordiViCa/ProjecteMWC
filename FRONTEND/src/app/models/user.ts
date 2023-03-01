@@ -14,6 +14,7 @@ export class User {
         public activated: boolean,
         public documents?: Array<any>,
         public password?: string,
+        public _id?: any
     ) {
 
     }

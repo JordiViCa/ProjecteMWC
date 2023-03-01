@@ -114,13 +114,25 @@ export class AuthService {
   getPersistedToken(): string {
     return this.tokenService.getToken() || '';
   }
-
   getAuthHeader() {
     return {headers: {
       'content-type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Authorization': `Bearer ${this.getPersistedToken()}`
     }};
+  };
+
+  getAuthHeaderGetImg() {
+    return {
+      method: 'POST',
+      headers: {
+        'Accept': '*',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `Bearer ${this.getPersistedToken()}`,
+      },
+      observe: 'response',
+      withCredentials: true
+    };
   };
 
   getAuthHeaderDocument(size: any) {

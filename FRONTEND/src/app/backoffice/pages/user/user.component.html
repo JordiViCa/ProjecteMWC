@@ -3,6 +3,7 @@
     <p class="opacity-50 mb-5">
         <a [routerLink]="['/backoffice']">Backoffice</a> > <a [routerLink]="['/backoffice/users']">Users</a> > <a [routerLink]="['/backoffice/users',user.nif]" class="font-bold">User</a>
     </p>
+    <button (click)="toggleUser()" class="my-5"><span class="font-bold py-2 px-3 bg-[#ffffff79] shadow-md duration-500 transition-all hover:shadow-xl rounded-full">Toggle activation</span> - State: <span class="{{ user.activated ? 'bg-green-500':'bg-red-500'}}  py-2 px-3 rounded-full duration-300 transition-all">{{ user.activated ? 'Activated':'Disabled'}}</span></button>
     <div class="tableWrapper">
         <table class="overflow-auto w-full text-sm text-left text-gray-500 border-separate border-spacing-1">
             <tr class="h-8">

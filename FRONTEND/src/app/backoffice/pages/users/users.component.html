@@ -10,7 +10,7 @@
         </div>
         <div class="flex flex-row w-1/2 my-auto">
             <label class="text-3xl font-thin" for="check">Show users to confirm</label>
-            <input class="ml-3 my-auto" type="checkbox" name="check" id="check">
+            <input class="ml-3 my-auto" type="checkbox" (change)="toggle($event)" name="check" id="check">
         </div>
     </div>
     <div class="tableWrapper">

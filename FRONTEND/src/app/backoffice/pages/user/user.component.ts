@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/backoffice/user.service';
 export class UserComponent implements OnInit {
   user!: User;
   id: string;
+  process: boolean = false;
   constructor(
     private userSVC: UserService,
     private route: ActivatedRoute,
@@ -38,6 +39,21 @@ export class UserComponent implements OnInit {
 
   uploadDocument(doc: any) {
     console.log(doc)
+  }
+
+  toggleUser() {
+    if (!this.process) {
+      this.process = true;
+      this.userSVC.toggleUser(this.user._id.$oid).subscribe(
+        (el: any) => {
+          this.process = false;
+          this.user.activated = !this.user.activated;
+        },
+        error => {
+          this.process = false;
+        }
+      )
+    }
   }
 
 }

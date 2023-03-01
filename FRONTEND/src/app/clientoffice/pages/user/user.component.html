@@ -4,38 +4,38 @@
         <a [routerLink]="['/client']">Client</a> > <a [routerLink]="['/client/user']" class="font-bold">User</a>
     </p>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="name">Name</label>
+        <label class="mb-2 text-gray-500" for="name">Name <span class="text-red-500">*</span>&nbsp;<span class="{{getInvalid('name') ? '':'opacity-0'}} text-red-500">Invalid name</span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="name">
     </div>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="surname1">Surname</label>
+        <label class="mb-2 text-gray-500" for="surname1">Surname <span class="text-red-500">* &nbsp;<span class="{{getInvalid('surname1') ? '':'opacity-0'}} text-red-500">Invalid Surname</span></span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="surname1">
     </div>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="surname2">Second Surname</label>
+        <label class="mb-2 text-gray-500" for="surname2">Second Surname &nbsp;<span class="{{getInvalid('surname2') ? '':'opacity-0'}} text-red-500">Invalid Surname</span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="surname2">
     </div>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="birthDate">Birth Date</label>
+        <label class="mb-2 text-gray-500" for="birthDate">Birth Date <span class="text-red-500">*</span> &nbsp;<span class="{{getInvalid('birthDate') ? '':'opacity-0'}} text-red-500">Invalid birth date</span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="date" formControlName="birthDate">
     </div>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="phone">Phone</label>
+        <label class="mb-2 text-gray-500" for="phone">Phone &nbsp;<span class="{{getInvalid('phone') ? '':'opacity-0'}} text-red-500">Invalid phone</span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="phone">
     </div>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="postalCode">Postal code</label>
+        <label class="mb-2 text-gray-500" for="postalCode">Postal code &nbsp;<span class="{{getInvalid('postalCode') ? '':'opacity-0'}} text-red-500">Invalid postal code</span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="postalCode">
     </div>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="town">Town</label>
+        <label class="mb-2 text-gray-500" for="town">Town &nbsp;<span class="{{getInvalid('town') ? '':'opacity-0'}} text-red-500">Invalid town</span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="town">
     </div>
     <div class="flex w-full md:w-[48%] flex-col mb-5">
-        <label class="mb-2 text-gray-500" for="address">Address</label>
+        <label class="mb-2 text-gray-500" for="address">Address &nbsp;<span class="{{getInvalid('address') ? '':'opacity-0'}} text-red-500">Invalid address</span></label>
         <input class="border bg-[#ffffff30] border-[#e4e9ee] rounded-sm p-2 outline-none hover:shadow-xl focus:shadow-xl shadow-md transition-shadow duration-500" type="text" formControlName="address">
     </div>
     <div class="flex flex-row justify-end mt-12 mb-5 w-full">
-        <button type="submit" class=" px-8 py-3 text-white text-lg bg-blue-500 hover:bg-blue-700 transition-all rounded-md shadow-md">Update</button>
+        <button type="submit" [disabled]="!editUserForm.valid" class="disabled:hover:bg-blue-500 disabled:opacity-50 px-8 py-3 text-white text-lg bg-blue-500 hover:bg-blue-700 transition-all rounded-md shadow-md">Edit</button>
     </div>
 </form>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { saveAs } from 'file-saver';
 import { User } from 'src/app/models/user';
 import { DocumentService } from 'src/app/services/backoffice/document.service';
 import { UserService } from 'src/app/services/backoffice/user.service';
@@ -23,8 +24,7 @@ export class DocumentsComponent {
   ) {
     this.uploadForm = this.formBuilder.group({
       file: [null, [Validators.required]],
-      nameSelector: ["", Validators.required],
-      name: ["", []]
+      nameSelector: ["", Validators.required]
     });
     this.userSVC.getMe().subscribe(
       (el: any) => {
@@ -46,9 +46,6 @@ export class DocumentsComponent {
         file: this.file,
         name: this.uploadForm.value.nameSelector
       }
-      if (this.uploadForm.value.name != "" && this.uploadForm.value.nameSelector == "other") {
-        params.name = this.uploadForm.value.name
-      }
       this.documentSVC.uploadDocument(params).subscribe(
         (el: any) => {
           console.log(el)
@@ -69,4 +66,19 @@ export class DocumentsComponent {
     }
   }
 
+  getDocument(id: any) {
+    this.documentSVC.getDocument(id).then((response: any) =>{
+        console.log(response);
+        let el = new File([response],'test.png')
+        saveAs(el,'test.png');
+    });
+  }
+
+  deleteDocument(id: any) {
+    this.documentSVC.deleteDocument(id).subscribe(
+      (el: any) => {
+        console.log(el)
+      }
+    )
+  }
 }

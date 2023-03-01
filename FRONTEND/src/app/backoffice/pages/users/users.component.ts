@@ -8,7 +8,8 @@ import { UserService } from 'src/app/services/backoffice/user.service';
 })
 export class UsersComponent implements OnInit {
   users: any[] = [];
-
+  baseUsers: any[] = [];
+  confirm = false;
   buscador: string = "";
   constructor(
     private userSVC: UserService
@@ -16,7 +17,8 @@ export class UsersComponent implements OnInit {
     this.userSVC.getUsers().subscribe(
       (el: any) => {
         console.log("Users",el)
-        this.users = el;
+        this.baseUsers = el;
+        this.users = [...this.baseUsers];
       }
     )
   }
@@ -27,5 +29,16 @@ export class UsersComponent implements OnInit {
 
   updateUsers() {
     this.users
+  }
+
+  toggle(event: any) {
+    this.confirm = !this.confirm;
+    if (this.confirm) {
+      this.users = this.baseUsers.filter(
+        (user: any) => !user.activated
+      )
+    } else {
+      this.users = [...this.baseUsers];
+    }
   }
 }

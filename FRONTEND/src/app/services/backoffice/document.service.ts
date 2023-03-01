@@ -1,4 +1,4 @@
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,6 +18,17 @@ export class DocumentService {
       .pipe(
         tap( res => res)
     );
+  }
+
+  deleteDocument(id: any) {
+    return this.http.delete(environment.backendURL + 'api/documents/'+id, this.authSVC.getAuthHeader())
+      .pipe(
+        tap( res => res)
+    );
+  }
+
+  getDocument(id: any) {
+    return fetch(environment.backendURL + 'api/documents/file/'+id,this.authSVC.getAuthHeaderGetImg()).then(res => res.blob)
   }
 
   uploadDocument(params: any) {

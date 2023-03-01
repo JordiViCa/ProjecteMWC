@@ -31,7 +31,7 @@ export class UserService {
   }
 
   newUser(params: User) {
-    return this.http.post(environment.backendURL + 'api/auth/register/client', JSON.stringify(params))
+    return this.http.post(environment.backendURL + 'api/auth/register/client', JSON.stringify(params), {headers: { 'content-type': 'application/json'}})
     .pipe(
       tap( res => res)
     )
@@ -39,6 +39,13 @@ export class UserService {
 
   updateUser(params: User,id: any) {
     return this.http.put(environment.backendURL + 'api/clients/'+id, JSON.stringify(params), this.authSVC.getAuthHeader())
+    .pipe(
+      tap( res => res)
+    )
+  }
+
+  toggleUser(id: any) {
+    return this.http.get(environment.backendURL + 'api/clients/'+id+'/toggle', this.authSVC.getAuthHeader())
     .pipe(
       tap( res => res)
     )
