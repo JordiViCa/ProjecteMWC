@@ -106,7 +106,7 @@ def remove_document(id):
 
     return jsonify(succes=True)
 
-@documents.route("file/<id>", methods=["GET"])
+@documents.route("file/<id>", methods=["POST"])
 @jwt_required()
 def get_file(id):
     user = Client.objects(documents__match={"_id":id}).first()
